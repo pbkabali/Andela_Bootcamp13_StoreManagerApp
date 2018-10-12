@@ -1,0 +1,146 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.top-bar-div {
+    width:100%;
+    display:flex;
+    min-height: 60px;
+    background-color:black;
+    flex-wrap: wrap;
+    position: fixed;
+    justify-content: space-between;
+}
+.logo-div {
+    width:auto;        
+}
+.logo-div a{
+    text-decoration: none;
+}
+.logo-div  h2{
+    margin-top: 20px;
+    margin-left: 120px;
+    color:white;
+    font-weight: 100;
+}
+.logo-div img{
+    float:left;
+    width: 60px;
+    margin-top: 10px;   
+}
+.logo-div  h2  span{
+    color:orangered;
+        
+}
+.top-center-div{
+    width:auto;
+}
+.top-right-div {
+    width:auto;   
+    
+}
+.top-right-div a{
+    text-decoration: none;   
+    margin-right: 30px;
+}
+.top-right-div a h2{
+    
+    color:white;
+    font-size: 1.5em;
+    font-weight: bolder;
+   
+  
+}
+.body-div {
+    width: 100%;
+    display:flex;
+    min-height: 600px;
+    justify-content: space-around;
+    background-color:#EAEDED;
+}
+.menu-div {
+    flex-basis: 20%;
+    background-color: brown;    
+
+}
+.detail-div {
+    
+    display:flex;
+    flex-direction: column; 
+        
+}
+.data-div {
+    flex-basis: 80%;
+    text-align: center;
+   
+}
+.form-div{
+    margin-top: 140px;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 1px;
+    border-color: orangered;
+}
+.tagline-div {
+    flex-basis: 20%;
+    text-align: center;   
+
+}
+.footer-div {
+    widows: 100%;
+    display: flex;
+    min-height: 100px;
+    border-top-color: orangered;
+    border-top-style: solid;
+    border-top-width: 1px;
+    background-color:#EAEDED;
+    flex-wrap:wrap;
+}
+.copyright-div {
+    width:auto;    
+}
+.developer-div {
+    width:auto;   
+}
+.tagline{
+    font-family:"book antiqua";
+    font-size: 1.1em;
+    margin-top:30px;
+    color:gray;
+   
+}
+.input1{
+    width: 250px;
+    margin: 5px;
+    border-radius:5px;
+    height:25px;    
+}
+.button1{
+    width:70px;
+    border-radius: 4px;
+    height:23px;
+    font-size: 1em;
+    font-family:"book antiqua";
+}
+.detail-entry-form{
+    padding: 20px;
+    margin-left:40px;
+    margin-right:40px;
+}
+.form-heading{
+    margin-top:30px;
+    font-size: 1.1em;
+}
+.footer-text{
+    color:gray;
+    font-size:0.8em;
+}
+
+@media only screen and (max-width: 480px) {
+    .detail-entry-form{
+        padding: 20px;
+        margin-left:10px;
+        margin-right:10px;
+    }
+}
