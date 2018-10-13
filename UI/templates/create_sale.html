@@ -2,7 +2,7 @@
 <html lang="en_US" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Store Manager | Logged in as user</title>
+    <title>Store Manager | Create sale</title>
     <link rel ="stylesheet" href = '../static/css/stylesmain.css'>
     <link rel="shortcut icon" href="../static/images/store_manager_logo.ico"/>
   </head>
@@ -26,10 +26,10 @@
                 <a href="create_sale.html"><h3>Inventory</h3></a>
             </div>
             <div class ="current-menu-item-div">
-                <a href="create_sale.html"><h3>Create Sale Record</h3></a>
+                <a href="create_sale.html"><h3>Create Sale</h3></a>
             </div>
             <div class ="menu-item-div">
-                <a href="create_sale.html"><h3>Create Sale Record</h3></a>
+                <a href="create_sale.html"><h3>View Sales Record</h3></a>
             </div>
             <div class ="menu-item-div">
                 <a href="create_sale.html"><h3>Create Sale Record</h3></a>
@@ -40,15 +40,15 @@
                 <div class="form-div">
                     <h2 class = "form-heading">ADD ITEM TO CART</h2>
                     <form class ="detail-entry-form">
-                        <input class = "input1" type="text" name="username" placeholder="Select Category"><br>
+                        <input class = "input1" type="text" name="category" placeholder="Select Category"><br>
                         <br>    
-                        <input class = "input1" type="text" name="username" placeholder="Select Item"><br>                                
+                        <input class = "input1" type="text" name="product" placeholder="Select Item"><br>                                
                         <br>
-                        <input class = "input1" type="text" name="username" placeholder="Quantity"><br>
+                        <input class = "input1" type="text" name="quantity" placeholder="Quantity"><br>
                         <br>
-                        <p>Unit Price: <span id="unit-price"> 0.00</span></p>
+                        <p>Unit Price: <span class="totals1" id="unit-price"> 0.00</span></p>
                         <br>
-                        <p>Total Price: <span id="total-price"> 0.00</span></p>
+                        <p>Total Price: <span class="totals2" id="total-price"> 0.00</span></p>
                         <br>
                         <input class = "button2" type="submit" value="Add to cart">
                         <br>

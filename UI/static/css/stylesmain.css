@@ -125,6 +125,12 @@
     border-radius:5px;
     height:25px;    
 }
+.input2{
+    width: 190px;
+    margin: 5px;
+    border-radius:5px;
+    height:25px;    
+}
 .button1{
     width:70px;
     border-radius: 4px;
@@ -183,14 +189,15 @@
     text-decoration: none;
     color:black;
 }
-
-#unit-price{
+.totals1{
     font-size:1.5em;
     color:gray;
 }
-#total-price{
+.totals2{
     font-size:1.5em;
-    color:gray;
+    color:red;
+    font-weight: bold;
+
 }
 .shopping-cart{
     display: inline-table;
