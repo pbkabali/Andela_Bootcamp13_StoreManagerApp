@@ -2,7 +2,7 @@
 <html lang="en_US" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Store Manager | Inventory Record</title>
+    <title>Store Manager | User Accounts</title>
     <link rel ="stylesheet" href = '../static/css/stylesmain.css'>
     <link rel="shortcut icon" href="../static/images/store_manager_logo.ico"/>
   </head>
@@ -13,7 +13,7 @@
         <a href ="index.html"><h2><span>Store</span>Manager</h2></a>
       </div>
       <div class = "top-center-div">
-        <h3 id = "page-label">Logged in as user</h3>
+        <h3 id = "page-label">Logged in as Admin</h3>
       </div>
       <div class = "top-right-div">
         <a href = "readme.html">&#63;</a>
@@ -21,73 +21,63 @@
       </div>
     </div>
     <div class = "body-others-div">
-        <div class = "menu-div">
+        <div class = "menu-div">        
             <div class ="menu-item-div">
-                <a href="profile.html"><h3>Profile</h3></a>
-            </div>        
+                <a href="admin_inventory.html"><h3>Inventory</h3></a>
+            </div>
+            <div class ="menu-item-div">
+                <a href="admin_create_sale.html"><h3>Create Sale</h3></a>
+            </div>
+            <div class ="menu-item-div">
+                <a href="admin_sales_record.html"><h3>View Sales Record</h3></a>
+            </div>
             <div class ="current-menu-item-div">
-                <a href="inventory.html"><h3>Inventory</h3></a>
+                <a href="admin_user_accounts.html"><h3>Attendants</h3></a>
             </div>
-            <div class ="menu-item-div">
-                <a href="create_sale.html"><h3>Create Sale</h3></a>
-            </div>
-            <div class ="menu-item-div">
-                <a href="individual_record.html"><h3>View Sales Record</h3></a>
-            </div>
-            
         </div>                
         <div class = "detail-div">
             <div class ="data-div">
                 <div class="form-div">
-                    <h2 class = "form-heading">CURRENT INVENTORY RECORD</h2>
+                    <h2 class = "form-heading">ATTENDANTS LIST</h2>
                     <br>
                     <br>
-                    <form action = "shopping_cart.html">
+                    <form action = "admin_create_user.html">
                         <table class = "table1">
                             <tr>
                                 <th>No.</th>
-                                <th>Category</th>
-                                <th>Item</th>
-                                <th>Quantity in Stock</th>
-                                <th>Unit Price</th>
-                                <th>Add 1pc to Cart</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th></th>
+                                
                             </tr>
                             <tr>
                                 <td id = "item-no">1.</td>
-                                <td id = "product-category">Foodstuffs</td>
-                                <td id = "item-name">Item 1</td>
-                                <td id = "item-quantity"> 5 </td>
-                                <td id = "item-unitprice">4</td>
-                                <td><input type="checkbox" class = "checkbox1">                            
+                                <td id = "first-name">sarah</td>
+                                <td id = "last-name">Jackson</td>
+                                <td><button class= "button2">Edit/Delete</button></td>                            
                             </tr>
                             <tr>
                                 <td id = "item-no">2.</td>
-                                <td id = "product-category">Electronics</td>
-                                <td id = "item-name">Item 2</td>
-                                <td id = "item-quantity"> 56 </td>
-                                <td id = "item-unitprice">15</td>
-                                <td><input type="checkbox" class = "checkbox1">                            
+                                <td id = "first-name">Arthur</td>
+                                <td id = "last-name">Blaise</td>
+                                <td><button class= "button2">Edit/Delete</button></td>                            
                             </tr>
                             <tr>
                                 <td id = "item-no">3.</td>
-                                <td id = "product-category">Toiletteries</td>
-                                <td id = "item-name">Item 3</td>
-                                <td id = "item-quantity"> 98 </td>
-                                <td id = "item-unitprice">2</td>
-                                <td><input type="checkbox" class = "checkbox1">                            
+                                <td id = "first-name">Aziz</td>
+                                <td id = "last-name">Kamel</td>
+                                <td><button class= "button2">Edit/Delete</button></td>                           
                             </tr>
                             <tr>
                                 <td id = "item-no">4.</td>
-                                <td id = "product-category">Glassware</td>
-                                <td id = "item-name">Item 4</td>
-                                <td id = "item-quantity"> 12 </td>
-                                <td id = "item-unitprice">10</td>
-                                <td><input type="checkbox" class = "checkbox1">                            
+                                <td id = "first-name">Grace</td>
+                                <td id = "last-name">Nanteza</td>
+                                <td><button class= "button2">Edit/Delete</button></td>                           
                             </tr>
                         </table>
                         <br>
                         <br>
-                        <input class = "button2" type="submit" value="Add selected to cart">
+                        <input class = "button2" type="submit" value="Add Attendant">
                         <br>
                         <br>
                     </form>
