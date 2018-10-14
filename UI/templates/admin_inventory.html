@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en_US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Store Manager | Inventory Record</title>
+    <link rel ="stylesheet" href = '../static/css/stylesmain.css'>
+    <link rel="shortcut icon" href="../static/images/store_manager_logo.ico"/>
+  </head>
+  <body>    
+    <div class = "top-bar-div">
+      <div class = "logo-div">
+        <a href ="index.html"><img src = "../static/images/store_manager_logo.jpg"></a>
+        <a href ="index.html"><h2><span>Store</span>Manager</h2></a>
+      </div>
+      <div class = "top-center-div">
+        <h3 id = "page-label">Logged in as Admin</h3>
+      </div>
+      <div class = "top-right-div">
+        <a href = "readme.html">&#63;</a>
+        <a href = "index.html">Sign Out</a>
+      </div>
+    </div>
+    <div class = "body-others-div">
+        <div class = "menu-div">        
+            <div class ="current-menu-item-div">
+                <a href="admin_inventory_admin.html"><h3>Inventory</h3></a>
+            </div>
+            <div class ="menu-item-div">
+                <a href="admin_create_sale.html"><h3>Create Sale</h3></a>
+            </div>
+            <div class ="menu-item-div">
+                <a href="admin_sales_record_admin.html"><h3>View Sales Record</h3></a>
+            </div>
+            <div class ="menu-item-div">
+                <a href="admin_user_accounts.html"><h3>Attendants</h3></a>
+            </div>
+        </div>                
+        <div class = "detail-div">
+            <div class ="data-div">
+                <div class="form-div">
+                    <h2 class = "form-heading">CURRENT INVENTORY RECORD</h2>
+                    <br>
+                    <br>
+                    <form action = "admin_shopping_cart.html">
+                        <table class = "table1">
+                            <tr>
+                                <th>No.</th>
+                                <th>Category</th>
+                                <th>Item</th>
+                                <th>Quantity in Stock</th>
+                                <th>Unit Price</th>
+                                <th>Add 1pc to Cart</th>
+                            </tr>
+                            <tr>
+                                <td id = "item-no">1.</td>
+                                <td id = "product-category">Foodstuffs</td>
+                                <td id = "item-name">Item 1</td>
+                                <td id = "item-quantity"> 5 </td>
+                                <td id = "item-unitprice">4</td>
+                                <td><input type="checkbox" class = "checkbox1">                            
+                            </tr>
+                            <tr>
+                                <td id = "item-no">2.</td>
+                                <td id = "product-category">Electronics</td>
+                                <td id = "item-name">Item 2</td>
+                                <td id = "item-quantity"> 56 </td>
+                                <td id = "item-unitprice">15</td>
+                                <td><input type="checkbox" class = "checkbox1">                            
+                            </tr>
+                            <tr>
+                                <td id = "item-no">3.</td>
+                                <td id = "product-category">Toiletteries</td>
+                                <td id = "item-name">Item 3</td>
+                                <td id = "item-quantity"> 98 </td>
+                                <td id = "item-unitprice">2</td>
+                                <td><input type="checkbox" class = "checkbox1">                            
+                            </tr>
+                            <tr>
+                                <td id = "item-no">4.</td>
+                                <td id = "product-category">Glassware</td>
+                                <td id = "item-name">Item 4</td>
+                                <td id = "item-quantity"> 12 </td>
+                                <td id = "item-unitprice">10</td>
+                                <td><input type="checkbox" class = "checkbox1">                            
+                            </tr>
+                        </table>
+                        <br>
+                        <br>
+                        <input class = "button2" type="submit" value="Add selected to cart">
+                        <br>
+                        <br>
+                    </form>
+                </div>
+            </div>
+            <div class ="tagline-div">
+            <p class = "tagline">All your business records in one place!</p>
+            </div>
+        </div>  
+    </div>
+    <div class = "footer-div">
+      <div class ="copyright-div">          
+          <p class = "footer-text">Developed and distributed by: Andela, Uganda, Kampala</p>
+          <p class = "footer-text">All rights reserved.</p>
+          <p class = "footer-text">&copy; Andela 2018</p>
+      </div>
+      <div class ="developer-div">
+      
+      </div>
+    </div>
+      
+    
+  </body>
+</html>
