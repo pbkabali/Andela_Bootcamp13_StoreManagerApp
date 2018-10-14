@@ -143,6 +143,13 @@
     font-size: 1em;
     font-family:"book antiqua";
 }
+.button2{
+    min-width:50px;
+    border-radius: 4px;
+    height:23px;
+    font-size: 1em;
+    font-family:"book antiqua";
+}
 .detail-entry-form{
     padding: 20px;
     margin-left:40px;
@@ -201,7 +208,16 @@
     display: inline-table;
     width:100%;
 }
-
+.table1 tr{
+    height: 40px;
+    background-color: pink;
+}
+.table1 th{
+   
+    background-color:black;
+    color:white;
+    font-weight:normal;
+}
 
 @media only screen and (max-width: 700px) {
 
@@ -251,7 +267,7 @@
     
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 540px) {
     .top-center-div{
         order:3;
     }    
