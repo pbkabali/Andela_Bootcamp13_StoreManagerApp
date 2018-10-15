@@ -2,7 +2,7 @@
 <html lang="en_US" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Store Manager | Inventory Record</title>
+    <title>Store Manager | Manage User Accounts</title>
     <link rel ="stylesheet" href = '../static/css/stylesmain.css'>
     <link rel="shortcut icon" href="../static/images/store_manager_logo.ico"/>
   </head>
@@ -23,14 +23,11 @@
     <div class = "body-others-div">
         <div class = "menu-div">  
             <div class ="menu-item-div">
-                <a href="profile.html"><h3>Profile</h3></a> 
+                <a href="admin_profile.html"><h3>Profile</h3></a> 
             </div>                   
             <div class ="menu-item-div">
                 <a href="admin_inventory.html"><h3>Inventory</h3></a>
-            </div>
-            <div class ="menu-item-div">
-                <a href="admin_create_sale.html"><h3>Create Sale</h3></a>
-            </div>
+            </div>            
             <div class ="menu-item-div">
                 <a href="admin_sales_record.html"><h3>View Sales Record</h3></a>
             </div>
@@ -41,7 +38,7 @@
         <div class = "detail-div">
             <div class ="data-div">
                 <div class="form-div">
-                    <h2 class = "form-heading">ADD NEW ATTENDANT</h2>
+                    <h2 class = "form-heading">ADD/EDIT ATTENDANT</h2>
                     <br>
                     <br>
                     <form class ="detail-entry-form" action="admin_user_accounts.html">
@@ -62,10 +59,15 @@
                             <input type="checkbox">Set as Admin        
                             <br>
                             <br>                 
-                            <input class = "button2" type="submit" value="Create Account">
+                            <input class = "button2" type="submit" value="Create/Update">
                             <br>
                             <br>
+                            <br>
+                            <input class = "delete-button" type="submit" value="Delete Attendant!">
+                        <br>
+                        <br>
                         </form>
+                        
                 </div>
             </div>
             <div class ="tagline-div">
@@ -74,16 +76,13 @@
         </div>  
     </div>
     <div class = "footer-div">
-      <div class ="copyright-div">          
-          <p class = "footer-text">Developed and distributed by: Andela, Uganda, Kampala</p>
-          <p class = "footer-text">All rights reserved.</p>
-          <p class = "footer-text">&copy; Andela 2018</p>
-      </div>
-      <div class ="developer-div">
-      
-      </div>
+        <div class ="developer-div">
+            <p class = "footer-text">Developed and distributed by: Andela, Uganda, Kampala</p>            
+        </div>
+        <div class ="copyright-div">                 
+            <p class = "footer-text">All rights reserved.&copy; Andela 2018</p>          
+        </div>        
     </div>
-      
-    
+    <script src="../static/js/myFunctions.js"></script>    
   </body>
 </html>

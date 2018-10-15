@@ -23,14 +23,11 @@
     <div class = "body-others-div">
         <div class = "menu-div"> 
             <div class ="menu-item-div">
-                <a href="profile.html"><h3>Profile</h3></a> 
+                <a href="admin_profile.html"><h3>Profile</h3></a> 
             </div>                    
             <div class ="current-menu-item-div">
                 <a href="admin_inventory.html"><h3>Inventory</h3></a>
-            </div>
-            <div class ="menu-item-div">
-                <a href="admin_create_sale.html"><h3>Create Sale</h3></a>
-            </div>
+            </div>            
             <div class ="menu-item-div">
                 <a href="admin_sales_record.html"><h3>View Sales Record</h3></a>
             </div>
@@ -44,7 +41,7 @@
                     <h2 class = "form-heading">CURRENT INVENTORY RECORD</h2>
                     <br>
                     <br>
-                    <form action = "admin_shopping_cart.html">
+                    <form action = "admin_create_product.html">
                         <table class = "table1">
                             <tr>
                                 
@@ -52,7 +49,7 @@
                                 <th>Product Name</th>
                                 <th>Quantity in Stock</th>
                                 <th>Unit Price</th>
-                                <th>Add 1pc to Cart</th>
+                                <th>Edit Product</th>
                             </tr>
                             <tr>
                                 
@@ -60,7 +57,7 @@
                                 <td id = "item-name">Item 1</td>
                                 <td id = "item-quantity"> 5 </td>
                                 <td id = "item-unitprice">4</td>
-                                <td><input type="checkbox" class = "checkbox1">                            
+                                <td><button class= "button3">Edit/Delete</button></td>                           
                             </tr>
                             <tr>
                                 
@@ -68,7 +65,7 @@
                                 <td id = "item-name">Item 2</td>
                                 <td id = "item-quantity"> 56 </td>
                                 <td id = "item-unitprice">15</td>
-                                <td><input type="checkbox" class = "checkbox1">                            
+                                <td><button class= "button3">Edit/Delete</button></td>                           
                             </tr>
                             <tr>
                                 
@@ -76,7 +73,7 @@
                                 <td id = "item-name">Item 3</td>
                                 <td id = "item-quantity"> 98 </td>
                                 <td id = "item-unitprice">2</td>
-                                <td><input type="checkbox" class = "checkbox1">                            
+                                <td><button class= "button3">Edit/Delete</button></td>                            
                             </tr>
                             <tr>
                                 
@@ -84,12 +81,12 @@
                                 <td id = "item-name">Item 4</td>
                                 <td id = "item-quantity"> 12 </td>
                                 <td id = "item-unitprice">10</td>
-                                <td><input type="checkbox" class = "checkbox1">                            
+                                <td><button class= "button3">Edit/Delete</button></td>                          
                             </tr>
                         </table>
                         <br>
                         <br>
-                        <input class = "button2" type="submit" value="Add selected to cart">
+                        <input class = "button2" type="submit" value="Add New Product">
                         <br>
                         <br>
                     </form>
@@ -101,16 +98,13 @@
         </div>  
     </div>
     <div class = "footer-div">
-      <div class ="copyright-div">          
-          <p class = "footer-text">Developed and distributed by: Andela, Uganda, Kampala</p>
-          <p class = "footer-text">All rights reserved.</p>
-          <p class = "footer-text">&copy; Andela 2018</p>
-      </div>
-      <div class ="developer-div">
-      
-      </div>
+        <div class ="developer-div">
+            <p class = "footer-text">Developed and distributed by: Andela, Uganda, Kampala</p>            
+        </div>
+        <div class ="copyright-div">                 
+            <p class = "footer-text">All rights reserved.&copy; Andela 2018</p>          
+        </div>        
     </div>
-      
-    
+    <script src="../static/js/myFunctions.js"></script>    
   </body>
 </html>

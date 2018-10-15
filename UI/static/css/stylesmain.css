@@ -80,7 +80,7 @@
    
 }
 .form-div{
-    margin-top:120px;
+    margin-top:70px;
     margin-left: 50px;
     margin-right: 50px;
     border-style: solid;
@@ -96,18 +96,21 @@
 .footer-div {
     widows: 100%;
     display: flex;
-    min-height: 100px;
+    min-height: 50px;
     border-top-color: orangered;
     border-top-style: solid;
     border-top-width: 1px;
     background-color:#EAEDED;
     flex-wrap:wrap;
+    justify-content: space-between;
 }
 .copyright-div {
-    width:auto;    
+    width:auto;  
+    text-align: right;  
 }
 .developer-div {
-    width:auto;   
+    width:auto;  
+
 }
 .tagline{
     font-family:"book antiqua";
@@ -137,14 +140,22 @@
     font-family:"book antiqua";
 }
 .button2{
-    width:150px;
+    min-width:50px;
     border-radius: 4px;
     height:23px;
     font-size: 1em;
     font-family:"book antiqua";
 }
-.button2{
-    min-width:50px;
+.button3{
+    min-width:30px;
+    border-radius: 4px;
+    height:23px;
+    font-size: 1em;
+    font-family:"book antiqua";
+}
+.delete-button{
+    background-color: rgb(240, 85, 85);
+    min-width:30px;
     border-radius: 4px;
     height:23px;
     font-size: 1em;
@@ -218,6 +229,14 @@
     color:white;
     font-weight:normal;
 }
+.profile-picture{
+    border-style: solid;
+    border-color: pink;
+    width:150px;
+    height:150px;
+    display: inline-block;
+    border-radius: 10px;
+}
 
 @media only screen and (max-width: 700px) {
 
@@ -282,7 +301,8 @@
     }
     .menu-div {
         background-color: brown; 
-        flex-wrap:wrap;  
+        flex-wrap:wrap; 
+        justify-content: center; 
     }
     .menu-item-div{
         width:44%;
@@ -323,4 +343,12 @@
     .menu-item-div a{
         font-size:0.8em;
     }
+    .copyright-div {
+        width:100%;  
+        text-align: center;  
+    }
+    .developer-div {
+        width:100%;  
+        text-align: center;
+    }    
 }
