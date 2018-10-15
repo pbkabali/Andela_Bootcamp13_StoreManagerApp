@@ -291,7 +291,7 @@
     .menu-div {
         background-color: brown; 
         flex-wrap:wrap; 
-        justify-content: space-around; 
+        justify-content: center; 
     }
     .menu-item-div{
         width:44%;
