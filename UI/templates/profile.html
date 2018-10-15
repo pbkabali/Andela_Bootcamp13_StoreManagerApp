@@ -2,7 +2,7 @@
 <html lang="en_US" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Store Manager | Create sale</title>
+    <title>Store Manager | Profile</title>
     <link rel ="stylesheet" href = '../static/css/stylesmain.css'>
     <link rel="shortcut icon" href="../static/images/store_manager_logo.ico"/>
   </head>
@@ -22,39 +22,56 @@
     </div>
     <div class = "body-others-div">
         <div class = "menu-div">
-            <div class ="menu-item-div">
+            <div class ="current-menu-item-div">
                 <a href="profile.html"><h3>Profile</h3></a>
             </div>
             <div class ="menu-item-div">
                 <a href="inventory.html"><h3>Inventory</h3></a>
             </div>
-            <div class ="current-menu-item-div">
+            <div class ="menu-item-div">
                 <a href="create_sale.html"><h3>Create Sale</h3></a>
             </div>
             <div class ="menu-item-div">
                 <a href="individual_record.html"><h3>View Sales Record</h3></a>
-            </div>
-            
+            </div>            
         </div>        
         <div class = "detail-div">
             <div class ="data-div">
-                <div class="form-div">
-                    <h2 class = "form-heading">ADD ITEM TO CART</h2>
-                    <form class ="detail-entry-form" action = "shopping_cart.html">
-                        <input class = "input1" type="text" name="category" placeholder="Select Category"><br>
-                        <br>    
-                        <input class = "input1" type="text" name="product" placeholder="Select Item"><br>                                
-                        <br>
-                        <input class = "input1" type="text" name="quantity" placeholder="Quantity"><br>
-                        <br>
-                        <p>Unit Price: <span class="totals1" id="unit-price"> 0.00</span></p>
-                        <br>
-                        <p>Total Price: <span class="totals2" id="total-price"> 0.00</span></p>
-                        <br>
-                        <input class = "button2" type ="submit" value = "Add to cart"/>
+                    
+                    <br>
+                    <h1> Welcome! <span id="names-of-user">User</span>   </h1>
+                    <br>
+                    <div class = "profile-picture">
                         <br>
                         <br>
-                    </form>
+                        <br>
+                        <a href = "profile.html">Upload a Picture</a><br>
+                        <a href = "profile.html">here</a>
+                    </div>                     
+                                            
+                <div class="form-div">                 
+                                      
+                    <h2 class = "form-heading">YOUR RECENT STATISTICS:</h2><br>
+                    <br>
+                    <div class = "profile-stats">
+                        <table class = "table1">                            
+                            <tr>                                
+                                <td>TOTAL SALES RECORDS</td>
+                                <td id = "total-sales">0</td>                                                         
+                            </tr>
+                            <tr>                                
+                                <td>TOTAL PRODUCTS SOLD</td>
+                                <td id = "total-products">0</td>                                                          
+                            </tr>
+                            <tr>                                
+                                <td>TOTAL REVENUE GENERATED</td>
+                                <td id = "total-revenue">0.00</td>                                                          
+                            </tr>                                    
+                        </table>
+                        <br>
+                        <p>Statistics for last 30days</p><br>
+                       
+                    </div>
                 </div>
             </div>
             <div class ="tagline-div">
@@ -70,6 +87,6 @@
             <p class = "footer-text">All rights reserved.&copy; Andela 2018</p>          
         </div>        
     </div>
-    <script src="../static/js/myFunctions.js"></script>  
+    <script src="../static/js/myFunctions.js"></script>    
   </body>
 </html>
