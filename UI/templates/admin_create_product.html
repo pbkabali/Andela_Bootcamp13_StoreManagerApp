@@ -2,7 +2,7 @@
 <html lang="en_US" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Store Manager | Manage User Accounts</title>
+    <title>Store Manager | Inventory Record</title>
     <link rel ="stylesheet" href = '../static/css/stylesmain.css'>
     <link rel="shortcut icon" href="../static/images/store_manager_logo.ico"/>
   </head>
@@ -26,8 +26,8 @@
                 <a href="profile.html"><h3>Profile</h3></a> 
             </div>                   
             <div class ="menu-item-div">
-                <a href="admin_inventory.html"><h3>Inventory</h3></a>
-            </div>            
+                <a href="admin_inventory.html"><h3>Inventory Record</h3></a>
+            </div>           
             <div class ="menu-item-div">
                 <a href="admin_sales_record.html"><h3>View Sales Record</h3></a>
             </div>
@@ -38,36 +38,35 @@
         <div class = "detail-div">
             <div class ="data-div">
                 <div class="form-div">
-                    <h2 class = "form-heading">ADD/EDIT ATTENDANT</h2>
+                    <h2 class = "form-heading">ADD/EDIT PRODUCT</h2>
                     <br>
                     <br>
-                    <form class ="detail-entry-form" action="admin_user_accounts.html">
-
-                            <input class = "input1" type="text" name="first-name" placeholder="First Name"><br>
-                            <br>
-                            <input class = "input1" type="text" name="last-name" placeholder="Last Name"><br>
-                            <br>
-                            <input class = "input1" type="text" name="d-o-b" placeholder="Date of birth dd/mm/yy"><br>
-                            <br>
-                            <input class = "input1" type="text" name="email-address" placeholder="Email Address"><br>
-                            <br>
-                            <input class = "input1" type="text" name="Address" placeholder="Physical Address"><br>
-                            <br>
-                            <input class = "input1" type="text" name="id-no" placeholder="ID Number"><br>
-                            <br>   
-                            <br>                  
-                            <input type="checkbox">Set as Admin        
-                            <br>
-                            <br>                 
-                            <input class = "button2" type="submit" value="Create/Update">
-                            <br>
-                            <br>
-                            <br>
-                            <input class = "delete-button" type="submit" value="Delete Attendant!">
+                    <form class ="detail-entry-form" action="admin_inventory.html">
+                        <label for="product-category">Product Category:</label><br> 
+                        <input class = "input1" type="text" name="product-category" placeholder="Product Category"><br>
+                        <br>
+                        <label for="product-name">Product Name:</label><br> 
+                        <input class = "input1" type="text" name="product-name" placeholder="Product Name"><br>
+                        <br>
+                        <label for="quantity-in-stock">Quantity in Stock:</label><br>  
+                        <input class = "input1" type="text" name="quantity-in-stock" placeholder="Quantity in Stock"><br>
+                        <br>
+                        <label for="unit-of-measure">Unit of Measure:</label><br>
+                        <input class = "input1" type="text" name="unit-of-measure" placeholder="Unit of Measure"><br>
+                        <br>
+                        <label for="unit-price">Unit Price:</label><br>
+                        <input class = "input1" type="text" name="unit-price" placeholder="Unit Price"><br>
+                        <br>   
+                        <br>           
+                        <input class = "button2" type="submit" value="Create/Modify">
                         <br>
                         <br>
-                        </form>
-                        
+                        <br>
+                        <input class = "delete-button" type="submit" value="Delete Product!">
+                        <br>
+                        <br>
+                    </form>
+                   
                 </div>
             </div>
             <div class ="tagline-div">
