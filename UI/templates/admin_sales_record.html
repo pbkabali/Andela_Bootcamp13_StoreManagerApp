@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en_US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Store Manager | Individual Sales Record</title>
+    <link rel ="stylesheet" href = '../static/css/stylesmain.css'>
+    <link rel="shortcut icon" href="../static/images/store_manager_logo.ico"/>
+  </head>
+  <body>    
+    <div class = "top-bar-div">
+      <div class = "logo-div">
+        <a href ="index.html"><img src = "../static/images/store_manager_logo.jpg"></a>
+        <a href ="index.html"><h2><span>Store</span>Manager</h2></a>
+      </div>
+      <div class = "top-center-div">
+        <h3 id = "page-label">Logged in as Admin</h3>
+      </div>
+      <div class = "top-right-div">
+        <a href = "readme.html">&#63;</a>
+        <a href = "index.html">Sign Out</a>
+      </div>
+    </div>
+    <div class = "body-others-div">
+        <div class = "menu-div"> 
+            <div class ="menu-item-div">
+                <a href="admin_profile.html"><h3>Profile</h3></a> 
+            </div>                        
+            <div class ="menu-item-div">
+                <a href="admin_inventory.html"><h3>Inventory</h3></a>
+            </div>          
+            <div class ="current-menu-item-div">
+                <a href="admin_sales_record.html"><h3>View Sales Record</h3></a>
+            </div>
+            <div class ="menu-item-div">
+                <a href="admin_user_accounts.html"><h3>Attendants</h3></a>
+            </div>
+        </div>        
+        <div class = "detail-div">
+            <div class ="data-div">
+                <div class="form-div">
+                    <h2 class = "form-heading">SALES RECORDS</h2>
+                    <br>
+                    <form class ="detail-entry-form" action="admin_overall_sales.html">
+                        <label class = "label1" for = "start-date">Start date:</label>
+                        <input class = "input2" type="text" name="start-date" placeholder="dd/mm/yy"><br>
+                        <br>  
+                        <label class = "label1" for = "end-date">End date:</label>  
+                        <input class = "input2" type="text" name="end-date" placeholder="dd/mm/yy"><br>                                
+                        <br>                        
+                        <br>
+                        <input class = "button2" type="submit" value="View All Attendants">
+                        <br>
+                        <br>
+                    </form>                        
+                        <p>OR</p>
+                        <br>
+                        <p>Select Attendant</p>
+                        <br>
+                    <form class ="detail-entry-form"> 
+                        <label class = "label1" for = "id-number">ID-Number:</label>                         
+                        <input class = "input2" type="text" name="id-number" placeholder="ID Number"><br>
+                        <br>                         
+                        <br>
+                        <input class = "button2" type="submit" value="View Selected">
+                        <br>
+                        <br>
+                    </form>    
+                    <h3>Attendant's Name:........   ID No.......</h3>
+                    <br>  
+                    <br>                  
+                    <table class = "table1">
+                        <tr>
+                            <th>Date of Sale</th>
+                            <th>Quantity Sold</th>
+                            <th>Total Price</th>
+                            <th>Transaction Details</th>
+                        </tr>
+                        <tr>
+                            <td id = "date-of-sale">...</td>
+                            <td id = "quantity">....</td>
+                            <td id = "amount">... </td>                                
+                            <td><button class= "button1">Details</button></td>                            
+                        </tr>     
+                        <tr>
+                            <td id = "date-of-sale">...</td>
+                            <td id = "quantity">....</td>
+                            <td id = "amount">... </td>                                
+                            <td><button class= "button1">Details</button></td>                            
+                        </tr>                                  
+                    </table>
+                    <br>
+                    <br>
+                    <p>Total Records: <span class = "totals1" id="total-records"> 0</span></p>                   
+                    <p>Total items sold: <span class = "totals1" id="total-quantity"> 0</span></p>                    
+                    <p>Total Amount Generated:<span class = "totals2" id="total-price"> 0.00</span></p>
+                    <br>
+                    <button class= "button1">Print</button>
+                    <button class= "button1">E-mail</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class ="tagline-div">
+            <p class = "tagline">All your business records in one place!</p>
+            </div>
+        </div>  
+    </div>
+    <div class = "footer-div">
+        <div class ="developer-div">
+            <p class = "footer-text">Developed and distributed by: Andela, Uganda, Kampala</p>            
+        </div>
+        <div class ="copyright-div">                 
+            <p class = "footer-text">All rights reserved.&copy; Andela 2018</p>          
+        </div>        
+    </div>
+    <script src="../static/js/myFunctions.js"></script>        
+  </body>
+</html>

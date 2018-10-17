@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en_US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Store Manager | Manage User Accounts</title>
+    <link rel ="stylesheet" href = '../static/css/stylesmain.css'>
+    <link rel="shortcut icon" href="../static/images/store_manager_logo.ico"/>
+  </head>
+  <body>    
+    <div class = "top-bar-div">
+      <div class = "logo-div">
+        <a href ="index.html"><img src = "../static/images/store_manager_logo.jpg"></a>
+        <a href ="index.html"><h2><span>Store</span>Manager</h2></a>
+      </div>
+      <div class = "top-center-div">
+        <h3 id = "page-label">Logged in as Admin</h3>
+      </div>
+      <div class = "top-right-div">
+        <a href = "readme.html">&#63;</a>
+        <a href = "index.html">Sign Out</a>
+      </div>
+    </div>
+    <div class = "body-others-div">
+        <div class = "menu-div">  
+            <div class ="menu-item-div">
+                <a href="admin_profile.html"><h3>Profile</h3></a> 
+            </div>                   
+            <div class ="menu-item-div">
+                <a href="admin_inventory.html"><h3>Inventory</h3></a>
+            </div>           
+            <div class ="menu-item-div">
+                <a href="admin_sales_record.html"><h3>View Sales Record</h3></a>
+            </div>
+            <div class ="current-menu-item-div">
+                <a href="admin_user_accounts.html"><h3>Attendants</h3></a>
+            </div>
+        </div>                
+        <div class = "detail-div">
+            <div class ="data-div">
+                <div class="form-div">
+                    <h2 class = "form-heading">ATTENDANTS LIST</h2>
+                    <br>
+                    <br>
+                    <form action = "admin_create_user.html">
+                        <table class = "table1">
+                            <tr>
+                                <th>No.</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Edit/Delete <br>Attendant</th>
+                                
+                            </tr>
+                            <tr>
+                                <td id = "item-no">1.</td>
+                                <td id = "first-name">sarah</td>
+                                <td id = "last-name">Jackson</td>
+                                <td><button class= "button3">Edit/Delete</button></td>                            
+                            </tr>
+                            <tr>
+                                <td id = "item-no">2.</td>
+                                <td id = "first-name">Arthur</td>
+                                <td id = "last-name">Blaise</td>
+                                <td><button class= "button3">Edit/Delete</button></td>                            
+                            </tr>
+                            <tr>
+                                <td id = "item-no">3.</td>
+                                <td id = "first-name">Aziz</td>
+                                <td id = "last-name">Kamel</td>
+                                <td><button class= "button3">Edit/Delete</button></td>                           
+                            </tr>
+                            <tr>
+                                <td id = "item-no">4.</td>
+                                <td id = "first-name">Grace</td>
+                                <td id = "last-name">Nanteza</td>
+                                <td><button class= "button3">Edit/Delete</button></td>                           
+                            </tr>
+                        </table>
+                        <br>
+                        <br>
+                        <input class = "button2" type="submit" value="Add Attendant">
+                        <br>
+                        <br>
+                    </form>
+                </div>
+            </div>
+            <div class ="tagline-div">
+            <p class = "tagline">All your business records in one place!</p>
+            </div>
+        </div>  
+    </div>
+    <div class = "footer-div">
+        <div class ="developer-div">
+            <p class = "footer-text">Developed and distributed by: Andela, Uganda, Kampala</p>            
+        </div>
+        <div class ="copyright-div">                 
+            <p class = "footer-text">All rights reserved.&copy; Andela 2018</p>          
+        </div>        
+    </div>
+    <script src="../static/js/myFunctions.js"></script>    
+    
+  </body>
+</html>
