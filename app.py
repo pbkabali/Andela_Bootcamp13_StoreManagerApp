@@ -20,7 +20,11 @@ def create_product():
         action.admin_create_product(name, unit, unit_price, quantity, minimum_quantity)       
         return jsonify(store_manager.inventory)
 
-    
+@app.route('/v1/products')
+def get_all_products():
+    return jsonify(store_manager.inventory)
+
+
 
 
 
