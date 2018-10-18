@@ -11,8 +11,8 @@ class Product_Operation:
         """
         product_duplicate = False #set variable that will be toggled incase a duplicate is found
         if len(inventory) > 0:              
-            for entry in inventory:                
-                if entry["product_name"] == name:
+            for product in inventory:                
+                if product["product_name"] == name:
                     product_duplicate = True   
 
         if product_duplicate:                    
@@ -29,6 +29,13 @@ class Product_Operation:
             self.response = "Product added to inventory successfully!"
             return True                   
         
+    def get_product_by_id(self,product_id):
+        """method to get back dictionary of product details from inventory
+        list when the user supplies the product id.
+        """
+        for product in inventory:
+            if product["product_id"] == product_id:
+                return product    
                 
       
 

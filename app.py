@@ -20,13 +20,14 @@ def create_product():
         action.admin_create_product(name, unit, unit_price, quantity, minimum_quantity)       
         return jsonify(store_manager.inventory)
 
+@app.route('/v1/products/<int:productId>')
+def get_product_by_id(productId):    
+    return jsonify(action.get_product_by_id(productId))
+
+
 @app.route('/v1/products')
 def get_all_products():
     return jsonify(store_manager.inventory)
-
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
