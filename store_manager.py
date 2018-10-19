@@ -23,18 +23,23 @@ inventory = {   #dictionary of all added products + details
         ,"quantity": 54
         ,"minumum_quantity":10
     } 
+    
 }  
-"""dictionary of sales records from all attendants"""
-sales_records = {} 
+# """dictionary of sales records from all attendants"""
+sales_records = {"total_sales":0, "total_products_sold":0} 
+
+# """dictionary to hold cart temporarily"""
+
+shopping_cart = {"total_price":0, "total_items_in_cart":0}
+
+initial_shopping_cart = {"total_price":0, "total_items_in_cart":0}
+
 
 class Product_Operation:
 
     def __init__(self, requester):              
-        self.requester = requester
-        self.shopping_cart = {}
-        self.total_price_in_cart = 0
-        self.total_items_in_cart = 0
-
+        self.requester = requester      
+        
     def admin_create_product(self, name, unit_of_measure, unit_price 
                             ,initial_quantity, minimum_quantity):
 
@@ -78,40 +83,35 @@ class Product_Operation:
             self.response = "Not enough quantity in inventory!"
 
         else: 
-            if len(self.shopping_cart) == 0:
-                id_in_cart = 1
-            else:    
-                id_in_cart = len(self.shopping_cart)-1 # subtract the two addional rows of 
+            id_in_cart = len(shopping_cart)-1 # subtract the two addional rows of 
                                                         #total items and total price         
-            self.shopping_cart[str(id_in_cart)] = {
+            shopping_cart[str(id_in_cart)] = {
                 "product_name":inventory[product_id]["product_name"]
                 ,"quantity_ordered":quantity
                 ,"price": quantity*inventory[product_id]["unit_price"]
-            }
-            self.total_price_in_cart += quantity*inventory[product_id]["unit_price"]
-            self.total_items_in_cart += quantity
-            self.shopping_cart["total_price"] = self.total_price_in_cart
-            self.shopping_cart["total_items_in_cart"] = self.total_items_in_cart
+            }           
+            shopping_cart["total_price"] += quantity*inventory[product_id]["unit_price"]
+            shopping_cart["total_items_in_cart"] += quantity         
 
             inventory[product_id]["quantity"] -= quantity
 
             self.response = "Product added to cart successfully!"
 
-    def create_sales_record(self):
-            self.shopping_cart["created-by:"] = self.requester
-            self.shopping_cart["created_at:"] = datetime.now()            
-            sales_records[len(sales_records)+1] = self.shopping_cart
-            # self.shopping_cart.clear() - check ehy this clears all sales records
-            self.response = "Sales Record Created Successfully"
+    def create_sales_record(self):  
+        global shopping_cart      
+        shopping_cart["created-by"] = self.requester
+        shopping_cart["created_at"] = datetime.now()            
+        sales_records[str(len(sales_records)-1)] = shopping_cart            
+        sales_records["total_sales"] += shopping_cart["total_price"]
+        sales_records["total_products_sold"] += shopping_cart["total_items_in_cart"]
+        shopping_cart = initial_shopping_cart
+        self.response = "Sales Record Created Successfully"
 
-            
-
-
-
-
-
-
-                
+    def  get_record_by_id(self, sale_id):
+        """method to get back dictionary of specific sale details from sales_record
+        dictionary when the user supplies the sale id.
+        """
+        return sales_records[sale_id]          
       
 
 # if __name__ == '__main__':     

@@ -38,7 +38,7 @@ def shopping_cart():
         action.add_to_cart_by_id(product_id,quantity)
         return action.response       
 
-    return jsonify(action.shopping_cart) 
+    return jsonify(store_manager.shopping_cart) 
 
 @app.route('/v1/sales/create_record')
 def create_sales_record():
@@ -49,6 +49,11 @@ def create_sales_record():
 @app.route('/v1/sales/get_all_records')
 def get_all_records():
     return jsonify(store_manager.sales_records)
+
+
+@app.route('/v1/sales/<saleId>')
+def get_record_by_id(saleId):    
+    return jsonify(action.get_record_by_id(saleId))
 
 
 if __name__ == "__main__":
