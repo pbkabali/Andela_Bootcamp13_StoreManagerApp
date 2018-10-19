@@ -7,7 +7,7 @@ action = store_manager.Product_Operation("Yivanna Biles")
 
 @app.route('/')
 def home_page():
-    return "Welcome to Store-Manager app!"
+    return "Welcome to Polos Store-Manager app!"
 
 @app.route('/v1/products/create', methods = ['GET','POST'])
 def create_product():
