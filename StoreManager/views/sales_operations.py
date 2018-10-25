@@ -68,7 +68,7 @@ def create_sales_record():
 @bp.route('/v1/sales/get_all_records')
 def get_all_records():
     if len(sales_records) <= 2:
-        response = "There are no sales records to show"
+        response = "There are no sales records to show!"
         return jsonify({"Response":response, "Sales Records":sales_records})
 
     response = "All sales records are shown"
@@ -77,7 +77,7 @@ def get_all_records():
 @bp.route('/v1/sales/<saleId>')
 def get_record_by_id(saleId): 
     if  len(sales_records) == 2:
-        response = "There are no records to show!"
+        response = "There are no sales records to show!"
         return jsonify({"response":response})
 
     elif int(saleId) > len(sales_records)-2:
