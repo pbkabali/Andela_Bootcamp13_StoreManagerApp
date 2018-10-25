@@ -1,0 +1,5 @@
+static/css/teststyles.css
+__pycache__/
+.pytest_cache/
+StoreManager/models/__pycache__/
+StoreManager/views/__pycache__
