@@ -10,7 +10,5 @@ before_script:
 script:
   - pytest tests/
   - coverage
-  - coveralls
 
-after_success:
-  - coveralls
+  
