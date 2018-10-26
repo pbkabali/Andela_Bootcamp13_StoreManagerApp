@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/pbkabali/Andela_Bootcamp13_StoreManagerApp.svg?branch=master)](https://travis-ci.org/pbkabali/Andela_Bootcamp13_StoreManagerApp)
+[![Build Status](https://travis-ci.org/pbkabali/Andela_Bootcamp13_StoreManagerApp.svg?branch=develop)](https://travis-ci.org/pbkabali/Andela_Bootcamp13_StoreManagerApp)
 
 # Store Manager App
 

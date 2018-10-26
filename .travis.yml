@@ -10,3 +10,8 @@ before_script:
 
 script:
   - pytest tests/
+  - coverage
+  - coverall
+
+after_success:
+  - coveralls
