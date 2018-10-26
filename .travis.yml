@@ -11,4 +11,7 @@ script:
   - pytest tests/
   - coverage
 
+after_success:
+  - coveralls
+
   
