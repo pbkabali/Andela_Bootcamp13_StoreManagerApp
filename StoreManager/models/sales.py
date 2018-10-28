@@ -1,21 +1,30 @@
+from datetime import datetime
+
 # """dictionary of sales records from all attendants"""
-sales_records = {"total_sales":0, "total_products_sold":0} 
+sales_records = {"records":[],"total_sales":0} 
 
 
 class Sale:
     
-    def __init__(self, requester, cart_details, created_at, total_items, total_sales):
-        self.sale_id = str(len(sales_records)-1)
+    def __init__(self, product_name, quantity, unit_price, requester):
+        self.sale_id = len(sales_records["records"])+1
+        self.product_name = product_name        
+        self.quantity = quantity
+        self.unit_price = unit_price
+        self.total_price = quantity*unit_price
         self.requester = requester
-        self.cart_details = cart_details
-        self.created_at = created_at
-        self.total_items = total_items
-        self.total_sales = total_sales
+        self.created_at = datetime.now()
+        self.record_details ={
+            "sale_id":self.sale_id
+            ,"product_name":self.product_name
+            ,"quantity":self.quantity
+            ,"unit_price":self.unit_price
+            ,"total_price":self.total_price
+            ,"requester":self.requester
+            ,"created_at": self.created_at
+        }
 
-    def create_record(self):     
-        sales_records[self.sale_id] = self.cart_details          
-        sales_records[self.sale_id]["created_by"] = self.requester
-        sales_records[self.sale_id]["created_at"] = self.created_at
-        sales_records["total_sales"] += self.total_sales
-        sales_records["total_products_sold"] += self.total_items
+    
+        
+        
         

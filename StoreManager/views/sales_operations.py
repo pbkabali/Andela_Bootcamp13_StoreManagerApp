@@ -1,90 +1,80 @@
 from flask import Blueprint, request, jsonify
 from ..models.products import Product, inventory
 from ..models.sales import Sale, sales_records
-from datetime import datetime
 
 bp = Blueprint("sales", __name__)
 
-"""dictionary to hold shopping cart temporarily"""
-current_shopping_cart = {"total_price":0, "total_items_in_cart":0}
-
-"""dictionary to initialize shopping cart after sale"""
-initial_shopping_cart = {"total_price":0, "total_items_in_cart":0}
-
-
-
-
-@bp.route('/v1/sales/shopping_cart', methods = ['GET', 'POST'])
+@bp.route('/api/v1/sales/create_record', methods = ['GET', 'POST'])
 def shopping_cart():
     if request.method == 'POST':        
-        product_id = int(request.form.get('product_id'))
-        quantity = int(request.form.get('quantity'))
+        product_id = request.json.get('product_id')
+        quantity = request.json.get('quantity')
+        requester = "requester"
 
+        #confirm that required fields are not empty
+        if not (product_id and quantity):
+            response = "Required fields must be filled and non-zero!"
+            return jsonify({"response": response}), 400
+
+        #confirm number fields have numbers
+        if not isinstance(product_id*quantity, int):
+            response = "Number fields must be Numbers!"
+            return jsonify({"response": response}), 400
+
+        #check if supplied id is in sales records
         if product_id > len(inventory):
-            response = "Product not found!"
-            return jsonify ({"Response":response})
+            response = "Sale record not found!"
+            return jsonify ({"Response":response}), 400        
 
-        elif inventory[product_id]["quantity"] < quantity:
+        #if id is available in sales records, get product details from inventory
+        for product in inventory:
+            if product['product_id']==product_id:
+                searched_product = product  
+
+        #check if requested quantity is available in inventory
+        if searched_product["quantity"] < quantity:
             response = "Not enough quantity in inventory!"
             return jsonify ({"Response":response})
-        else: 
-            id_in_cart = len(current_shopping_cart)-1 # subtract the two addional rows of 
-                                                        #total items and total price         
-            current_shopping_cart[str(id_in_cart)] = {
-                "product_name":inventory[product_id]["product_name"]
-                ,"quantity_ordered":quantity
-                ,"price": quantity*inventory[product_id]["unit_price"]
-            }           
-            current_shopping_cart["total_price"] += quantity*inventory[product_id]["unit_price"]
-            current_shopping_cart["total_items_in_cart"] += quantity         
+        
+        #if there is enough quantity in inventory, continue with sale
+        sale = Sale(
+            searched_product["name"]
+            ,quantity
+            ,searched_product["unit_price"]
+            ,requester
+        )
+        sales_records["records"].append(sale.record_details) #add record to storage                
+        sales_records["total_sales"] += sale.total_price #update total sales
 
-            inventory[product_id]["quantity"] -= quantity # reduce quantity of product in inventory
+        #reduce inventory quantiy by sale quantity  
+        inventory[inventory.index(searched_product)]["quantity"] -= quantity                                                  
+        
+        response = "Sales Record Created Successfully"  
+        return jsonify({response: sale.record_details}), 200
 
-            response = "Product added to cart successfully!"
-            return jsonify ({"Response":response, "Items in Cart":current_shopping_cart}), 200
-
-    if len(current_shopping_cart) > 2:        
-        return jsonify ({"Items in Cart": current_shopping_cart}), 200  
-
-    response = "Cart is empty!"
-    return jsonify ({"Response":response, "Items in Cart": current_shopping_cart})  
-
-@bp.route('/v1/sales/create_record')
-def create_sales_record():
-    global current_shopping_cart
-    attendant = "Attendant 1"
-    date = datetime.now()            
-    details = current_shopping_cart            
-    total_price = current_shopping_cart["total_price"]
-    items= current_shopping_cart["total_items_in_cart"]
-    sale = Sale(attendant, details, date, items, total_price)
-    sale.create_record()
-    current_shopping_cart = initial_shopping_cart
-
-    response = "Sales Record Created Successfully"  
-    
-    return jsonify({"Response": response}), 200
-
-@bp.route('/v1/sales/get_all_records')
+@bp.route('/api/v1/admin/sales/all')
 def get_all_records():
-    if len(sales_records) <= 2:
+    if len(sales_records['records']) == 0:
         response = "There are no sales records to show!"
-        return jsonify({"Response":response, "Sales Records":sales_records})
+        return jsonify({"Response":response}), 200
 
-    response = "All sales records are shown"
-    return jsonify({"Response":response, "Sales Records":sales_records}), 200
+    response = "All sales records"
+    return jsonify({response : sales_records["records"]}), 200
 
-@bp.route('/v1/sales/<saleId>')
+@bp.route('/api/v1/sales/<int:saleId>')
 def get_record_by_id(saleId): 
-    if  len(sales_records) == 2:
+    if  len(sales_records['records']) == 0:
         response = "There are no sales records to show!"
         return jsonify({"response":response})
 
-    elif int(saleId) > len(sales_records)-2:
+    if int(saleId) > len(sales_records['records']):
         response = "Sale record not found!" 
-        return jsonify({'Response':response})
-    else:
-        response = "Sales record found!" 
-        return jsonify({"response":response, "Record details":sales_records[saleId]})
+        return jsonify({'Response':response}), 404
+
+    for sale in sales_records['records']:
+        if sale['sale_id']==int(saleId):
+            searched_sale = sale
+    response = "Sales record found!" 
+    return jsonify({response: searched_sale}), 200
 
     
