@@ -7,9 +7,7 @@ before_script:
   - pip install -r requirements.txt
 
 script:
-  # # - python -m pytest tests/
-  # - nosetests --with-coverage --cover-package=StoreManager
-  - pytest --cov=StoreManager tests/
+  - pytest
 after_success:
   - coveralls
 
