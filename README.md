@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/pbkabali/Andela_Bootcamp13_StoreManagerApp.svg?branch=develop)](https://travis-ci.org/pbkabali/Andela_Bootcamp13_StoreManagerApp)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8ab49e5fe348c3d0c6f1/maintainability)](https://codeclimate.com/github/pbkabali/Andela_Bootcamp13_StoreManagerApp/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/pbkabali/Andela_Bootcamp13_StoreManagerApp/badge.svg?branch=develop)](https://coveralls.io/github/pbkabali/Andela_Bootcamp13_StoreManagerApp?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/pbkabali/Andela_Bootcamp13_StoreManagerApp/badge.svg)](https://coveralls.io/github/pbkabali/Andela_Bootcamp13_StoreManagerApp)
 
 This is a web application to help store owners manage sales and product inventory records as data is collected from the daily operations of the store attendants.
 
