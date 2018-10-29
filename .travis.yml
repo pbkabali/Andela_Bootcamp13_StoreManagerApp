@@ -1,15 +1,13 @@
 language : python
 
 python:
-  - 3.6  
+  - "3.6"  
 
 before_script:
-  - pip install
   - pip install -r requirements.txt
 
 script:
-  - pytest tests/
-  - coverage
+  - python -m pytest --cov=StoreManager tests/
 
 after_success:
   - coveralls
