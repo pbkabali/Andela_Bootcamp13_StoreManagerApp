@@ -1,28 +1,40 @@
-# """#dictionary of all added products + details"""
-inventory = [] 
+import psycopg2
+from ..db.db import DbConnection
+from flask import request
 
-class Product:
+
+class Product(DbConnection):
     
-    def __init__(
-        self, category, name, unit_of_measure
-        ,unit_price, quantity, minimum_quantity
-    ):              
-        self.product_id = len(inventory)+1
-        self.category = category
-        self.name = name
-        self.unit_of_measure = unit_of_measure
-        self.unit_price = unit_price
-        self.quantity_to_add = quantity
-        self.minimum_quantity = minimum_quantity
-        self.product_details = {
-            "product_id": self.product_id
-            ,"category" : self.category
-            ,"name":self.name
-            ,"unit_of_measure":self.unit_of_measure
-            ,"unit_price":self.unit_price
-            ,"quantity":self.quantity_to_add
-            ,"minumum_quantity":self.minimum_quantity
-        }   
+    
+    def add_a_product(self, name, unit, unit_price, quantity, minimum_quantity,category):        
+        command = """INSERT INTO products (product_name, unit,
+            unit_price, quantity, minimum_quantity, category) VALUES ( %s, %s, %s,%s, %s,%s) """
+        self.cursor.execute(
+            command, (name, unit, unit_price, quantity, minimum_quantity,category)                         
+        )       
+       
+    def get_products(self):
+        command = """SELECT * FROM products"""
+        self.cursor.execute(command)
+        products = self.cursor.fetchall()
+        return products    
+
+    def duplicate_product(self, product_name):
+        command = """SELECT * FROM products WHERE product_name = %s"""
+        self.cursor.execute(command, product_name)
+        if self.cursor.fetchone() is not None:
+            return True
+        else:
+            return False  
+
+if __name__=="__main__":
+    product = Product()  
+    for i in product.get_products():
+        print (i)
+
+
+    
+        
         
         
         

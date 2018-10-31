@@ -1,8 +1,11 @@
 from flask import Flask, jsonify
+import psycopg2
+
 
 def create_app():
     app = Flask(__name__)
 
+    
     @app.route("/")
     def homepage():
         return jsonify([
@@ -23,5 +26,6 @@ def create_app():
     from .views import sales_operations
     app.register_blueprint(sales_operations.bp)
     
+
 
     return app 

@@ -1,40 +1,42 @@
-from flask import Blueprint, request, jsonify
-from ..models.products import Product, inventory
+from flask import Blueprint, request, jsonify, make_response
+from ..models.products import Product
 import json
 
 bp = Blueprint('products', __name__)
 
 
-@bp.route('/api/v1/products/create', methods = ['GET','POST'])
+@bp.route('/api/v1/products/create', methods = ['POST'])
 def create_product():
-    if request.method == 'POST':
-        category =  request.json.get('category')
-        name = request.json.get('name')
-        unit = request.json.get('unit')
-        unit_price = request.json.get('unit_price')
-        quantity = request.json.get('quantity')
-        minimum_quantity = request.json.get('minimum_quantity')
+    # if request.method == 'POST':
+        user_data = request.get_json()
+        category =  user_data.get('category')
+        name = user_data.get('name')
+        unit = user_data.get('unit')
+        unit_price = user_data.get('unit_price')
+        quantity = user_data.get('quantity')
+        minimum_quantity = user_data.get('minimum_quantity')
 
+        error = None
         #confirm that required fields are not empty
         if not (name and unit_price and quantity):
-            response = "Required fields must be filled and non-zero!"
-            return jsonify({"response": response}), 400
+            error = "Required fields must be filled and non-zero!"
+            return jsonify({"response": error}), 400
 
         #confirm number fields have numbers
         if not isinstance(unit_price*quantity*minimum_quantity, int): 
-            response = "Number fields must be Numbers!"
-            return jsonify({"response": response}), 400
+            error = "Number fields must be Numbers!"
+            return jsonify({"response": error}), 400
 
         #check if product is not already in inventory
-        if [product for product in inventory if product['name'] == name]:
+        oduct for product in inventory if product['name'] == name]:
             response = "Product already exists! Choose edit instead"
             return jsonify({'response': response}), 200
 
         #create product if all tests are passed
-        new_product = Product(category, name, unit, unit_price, quantity, minimum_quantity)
-        inventory.append(new_product.product_details) 
-        response = "Product added successfully!"  
-        return jsonify({response: new_product.product_details}), 200   
+        new_product = Product()
+        new_product.add_a_product(name, unit, unit_price, quantity, minimum_quantity, category) 
+        message = "Product added successfully!"  
+        return jsonify(message), 200   
 
     
 @bp.route('/api/v1/products/<int:productId>')
@@ -55,12 +57,14 @@ def get_product_by_id(productId):
 
 @bp.route('/api/v1/products')
 def get_all_products():
-    if len(inventory) == 0:
-        response = "There are no products in inventory"
-        return jsonify({"response":response}), 200
-    else:
-        response = "All available products" 
-        return jsonify({response : inventory}), 200
+    products = Product()
+    response = products.get_products()
+    if len(response) == 0:    
+        message = "There are no products in inventory"
+        return jsonify({"response":message}), 200
+    
+    message = "All available products" 
+    return jsonify({message:response}), 200
 
         
 
