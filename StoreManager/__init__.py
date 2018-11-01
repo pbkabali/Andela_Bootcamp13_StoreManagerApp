@@ -26,6 +26,7 @@ def create_app():
     from .views import sales_operations
     app.register_blueprint(sales_operations.bp)
     
-
+    from .views import user_management
+    app.register_blueprint(user_management.bp)
 
     return app 

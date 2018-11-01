@@ -1,7 +1,6 @@
 
 import psycopg2
 from ..db.db import DbConnection
-from flask import request
 
 
 class Sale(DbConnection):

@@ -15,9 +15,7 @@ class DbConnection:
             print('failed to connect')    
         self.cursor = self.connect.cursor()
         self.connect.autocommit = True
-        # except Exception as e:
-        #     print (e)
-        #     print ("failed to connect db")    
+       
 
 
 #         #     self.g = g   			
