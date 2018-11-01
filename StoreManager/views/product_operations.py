@@ -5,9 +5,9 @@ import json
 bp = Blueprint('products', __name__)
 
 
-@bp.route('/api/v1/products/create', methods = ['POST'])
+@bp.route('/api/v1/products/create', methods = ['GET','POST'])
 def create_product():
-    # if request.method == 'POST':
+    if request.method == 'POST':
         user_data = request.get_json()
         category =  user_data.get('category')
         name = user_data.get('name')
@@ -28,37 +28,35 @@ def create_product():
             return jsonify({"response": error}), 400
 
         #check if product is not already in inventory
-        oduct for product in inventory if product['name'] == name]:
-            response = "Product already exists! Choose edit instead"
-            return jsonify({'response': response}), 200
-
-        #create product if all tests are passed
         new_product = Product()
-        new_product.add_a_product(name, unit, unit_price, quantity, minimum_quantity, category) 
+        if new_product.duplicateProduct(name):
+            response = "Product already exists! Choose modify instead"
+            return jsonify({'response': response}), 400
+       
+        #create product if all tests are passed        
+        new_product.addProduct(name, unit, unit_price, quantity, minimum_quantity, category) 
         message = "Product added successfully!"  
         return jsonify(message), 200   
 
     
 @bp.route('/api/v1/products/<int:productId>')
 def get_product_by_id(productId):
-    if  len(inventory) == 0:
-        response = "There are no products in inventory!"
-        return jsonify({"response":response}), 200
-
-    elif int(productId) > len(inventory):
-        response = "Product not found!" 
-        return jsonify({'Response':response}), 404
+    product = Product()
+    if  product.getProducts == None:
+        message = "There are no products in inventory!"
+        return jsonify({"response":message}), 200
+    response = product.getProductbyId(productId)
+    if response == None:
+        message = "Product not found!" 
+        return jsonify({'Response':message}), 404
     else:
-        for product in inventory:
-            if product['product_id']==int(productId):
-                searched_product = product
-        response = "Product found!" 
-        return jsonify({response : searched_product}), 200
+        message = "Product found!" 
+        return jsonify({message : response}), 200
 
 @bp.route('/api/v1/products')
 def get_all_products():
     products = Product()
-    response = products.get_products()
+    response = products.getProducts()
     if len(response) == 0:    
         message = "There are no products in inventory"
         return jsonify({"response":message}), 200

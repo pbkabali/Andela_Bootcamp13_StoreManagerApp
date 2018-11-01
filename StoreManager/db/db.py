@@ -8,7 +8,7 @@ class DbConnection:
     def __init__(self):
         try:
             self.connect = psycopg2.connect(dbname="store", user="postgres",
-             host="localhost", password = "polos241!",port=5432, cursor_factory=RealDictCursor)
+             host="localhost", password = "polos241!",port=5432, cursor_factory=RealDictCursor)#
             print('Database STORE succesfully connected')
         except Exception as e:
             print(e)
@@ -42,7 +42,7 @@ class DbConnection:
             ,first_name VARCHAR(50) NOT NULL
             ,last_name VARCHAR(50)
             ,username VARCHAR(10) UNIQUE NOT NULL
-            ,created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+            ,created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
             )            
             """,
             """
@@ -50,7 +50,7 @@ class DbConnection:
             id SERIAL PRIMARY KEY
             ,product_name VARCHAR(50) NOT NULL
             ,unit VARCHAR(10) NOT NULL
-            ,unit_price NUMERIC NOT NULL
+            ,unit_price INT NOT NULL
             ,quantity SMALLINT NOT NULL
             ,minimum_quantity SMALLINT 
             ,category VARCHAR(30)
@@ -60,24 +60,22 @@ class DbConnection:
             CREATE TABLE IF NOT EXISTS sales(
             id SMALLSERIAL PRIMARY KEY
             ,attendant_id SMALLINT REFERENCES users(id)
-            ,product_id SMALLINT REFERENCES products(id)
-            ,quantity SMALLINT NOT NULL
-            ,unit_price NUMERIC
-            ,total_price NUMERIC NOT NULL
-            ,created_at TIMESTAMPTZ
+            ,product_id SMALLINT REFERENCES products(id)            
+            ,quantity SMALLINT NOT NULL           
+            ,total_price INT NOT NULL
+            ,created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
             )
             """
         )
         for i in commands:
             self.cursor.execute(i)
-           
-    
 
+    
         
 
 if __name__=="__main__":
     db = DbConnection()
-    db.create_db_tables()
+    
    
     
             
