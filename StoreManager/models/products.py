@@ -31,8 +31,15 @@ class Product(DbConnection):
         self.cursor.execute(command,[productId])
         return self.cursor.fetchone()
 
+    def modifyProduct(self, productId, characteristic, value):
+        command = """UPDATE products SET %s = %s WHERE id = %s """    
+        self.cursor.execute(command, (characteristic, value, productId))
+       
 
-
+    def deleteProduct(self, productId):
+        command = """DELETE * FROM products WHERE id = %s"""
+        self.cursor.execute(command,[productId])
+    
 
 
 

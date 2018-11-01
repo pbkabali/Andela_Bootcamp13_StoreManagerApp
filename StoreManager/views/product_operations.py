@@ -39,8 +39,8 @@ def create_product():
         return jsonify(message), 200   
 
     
-@bp.route('/api/v1/products/<int:productId>')
-def get_product_by_id(productId):
+@bp.route('/api/v1/products/<int:productId>', methods = ['GET','PUT','DELETE'])
+def product_by_id(productId):
     product = Product()
     if  product.getProducts == None:
         message = "There are no products in inventory!"
@@ -49,9 +49,23 @@ def get_product_by_id(productId):
     if response == None:
         message = "Product not found!" 
         return jsonify({'Response':message}), 404
-    else:
-        message = "Product found!" 
-        return jsonify({message : response}), 200
+
+    if request.method == "PUT":
+        user_data = request.get_json()
+        characteristic =  user_data.get('characteristic')
+        value = user_data.get('value')
+        product.modifyProduct(productId, characteristic, value)
+        response = product.getProductbyId(productId)
+        message = "product has been modified"
+        return jsonify ({message:response})
+
+    if request.method == "DELETE":
+        product.deleteProduct(productId)
+        message = "product has been deleted!"
+        return jsonify({"response":message})   
+    
+    message = "Product found!" 
+    return jsonify({message : response}), 200
 
 @bp.route('/api/v1/products')
 def get_all_products():

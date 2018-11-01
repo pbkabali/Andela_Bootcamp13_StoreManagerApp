@@ -6,10 +6,10 @@ import json
 bp = Blueprint('users', __name__, url_prefix='/auth')
 
 
-@bp.route('/api/v1/register', methods=('POST'))
+@bp.route('/api/v1/signup', methods=['POST'])
 def register():
     user=User()
-    user_data = request.get_json
+    user_data = request.get_json()
     first_name =  user_data.get('first_name')
     last_name = user_data.get('last_name')
     username = user_data.get('username')
@@ -25,7 +25,7 @@ def register():
         return jsonify({"response": message}), 400
 
     #Assign admin or user previledge
-    if user.get_users() == None:
+    if user.get_users() == []:
         user_role = "admin"
     else:
         user_role = "user"  
@@ -37,13 +37,12 @@ def register():
 
     return jsonify({"Response": message})
 
-@bp.route('/api/v1/login', methods=('POST'))
+@bp.route('/api/v1/login', methods=['POST'])
 def login():
     user=User()
-    user_data = request.get_json
+    user_data = request.get_json()
     username = user_data.get('username')
-    password = user_data.get('password') 
-      
+    password = user_data.get('password')       
     response = user.login(username, password)
     if response == "incorrect username":
         message = "incorrect username entered!"

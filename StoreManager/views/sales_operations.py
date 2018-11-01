@@ -10,7 +10,7 @@ def create_record():
 
     #check that products records is not empty
     product=Product()
-    if  product.getProducts == None:
+    if  product.getProducts == []:
         message = "There are no products in inventory!"
         return jsonify({"response":message}), 200
     if request.method == 'POST':  
@@ -61,7 +61,7 @@ def create_record():
 def get_all_records():
     sale=Sale()
     response = sale.getAllRecords()
-    if response == None:
+    if response == []:
         message = "There are no sales records to show!"
         return jsonify({"Response":message}), 200
     message = "All sales records"
