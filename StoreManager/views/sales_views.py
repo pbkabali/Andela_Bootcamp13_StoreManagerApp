@@ -43,18 +43,18 @@ def create_record():
         
         #if there is enough quantity in inventory, continue with sale
         sale = Sale()
-        sale.addSale(
-            product_id                        
-            ,quantity
-            ,searched_product["unit_price"]*quantity
-            )
+        response =sale.addSale(
+                        product_id                        
+                        ,quantity
+                        ,searched_product["unit_price"]*quantity
+                        )
         #reduce inventory quantiy by sale quantity 
         new_quantity = searched_product['quantity']-quantity
         sale.updateProductQuantity(product_id, new_quantity)                                                            
-        message = "Sales Record Created Successfully"  
-        return jsonify({"Response":message}), 200
+        message = "created_record"  
+        return jsonify({message:response}), 200
 
-    message = "All available products" 
+    message = "available_products" 
     return jsonify({message:response}), 200    
 
 @bp.route('/api/v1/admin/sales/all')
@@ -64,7 +64,7 @@ def get_all_records():
     if response == []:
         message = "There are no sales records to show!"
         return jsonify({"Response":message}), 200
-    message = "All sales records"
+    message = "sales_records"
     return jsonify({message : response}), 200
 
 @bp.route('/api/v1/sales/<int:saleId>')
@@ -80,7 +80,7 @@ def get_record_by_id(saleId):
         message = "Sale record not found!" 
         return jsonify({'Response': message}), 404
 
-    message = "Sales record found!" 
+    message = "found_record" 
     return jsonify({message: response}), 200
 
     

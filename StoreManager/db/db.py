@@ -14,8 +14,7 @@ class DbConnection:
             print(e)
             print('failed to connect')    
         self.cursor = self.connect.cursor()
-        self.connect.autocommit = True
-       
+        self.connect.autocommit = True      
 
 
 #         #     self.g = g   			
@@ -36,7 +35,7 @@ class DbConnection:
         commands = (
             """
             CREATE TABLE IF NOT EXISTS users(
-            id SMALLSERIAL PRIMARY KEY
+            users_id SMALLSERIAL PRIMARY KEY
             ,first_name VARCHAR(50) NOT NULL
             ,last_name VARCHAR(50)
             ,username VARCHAR(10) UNIQUE NOT NULL
@@ -47,7 +46,7 @@ class DbConnection:
             """,
             """
             CREATE TABLE IF NOT EXISTS products(
-            id SERIAL PRIMARY KEY
+            product_id SERIAL PRIMARY KEY
             ,product_name VARCHAR(50) NOT NULL
             ,unit VARCHAR(10) NOT NULL
             ,unit_price INT NOT NULL
@@ -58,9 +57,9 @@ class DbConnection:
             """,
             """
             CREATE TABLE IF NOT EXISTS sales(
-            id SMALLSERIAL PRIMARY KEY
-            ,attendant_id SMALLINT REFERENCES users(id)
-            ,product_id SMALLINT REFERENCES products(id)            
+            sale_id SMALLSERIAL PRIMARY KEY
+            ,attendant_id SMALLINT REFERENCES users(users_id)
+            ,product_id SMALLINT REFERENCES products(product_id)            
             ,quantity SMALLINT NOT NULL           
             ,total_price INT NOT NULL
             ,created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP

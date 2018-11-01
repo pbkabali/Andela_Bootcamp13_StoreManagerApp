@@ -34,9 +34,10 @@ def create_product():
             return jsonify({'response': response}), 400
        
         #create product if all tests are passed        
-        new_product.addProduct(name, unit, unit_price, quantity, minimum_quantity, category) 
-        message = "Product added successfully!"  
-        return jsonify(message), 200   
+        response = new_product.addProduct(name, unit, unit_price, 
+                                    quantity, minimum_quantity, category) 
+        message = "product_added"  
+        return jsonify({message:response}), 200   
 
     
 @bp.route('/api/v1/products/<int:productId>', methods = ['GET','PUT','DELETE'])
@@ -56,15 +57,15 @@ def product_by_id(productId):
         value = user_data.get('value')
         product.modifyProduct(productId, characteristic, value)
         response = product.getProductbyId(productId)
-        message = "product has been modified"
+        message = "modified_product"
         return jsonify ({message:response})
 
     if request.method == "DELETE":
         product.deleteProduct(productId)
-        message = "product has been deleted!"
+        message = "deleted_product"
         return jsonify({"response":message})   
     
-    message = "Product found!" 
+    message = "found_product" 
     return jsonify({message : response}), 200
 
 @bp.route('/api/v1/products')
@@ -75,7 +76,7 @@ def get_all_products():
         message = "There are no products in inventory"
         return jsonify({"response":message}), 200
     
-    message = "All available products" 
+    message = "available_products" 
     return jsonify({message:response}), 200
 
         

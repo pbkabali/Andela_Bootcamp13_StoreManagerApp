@@ -20,13 +20,13 @@ def create_app():
             }            
         ]), 200
 
-    from .views import product_operations
-    app.register_blueprint(product_operations.bp)
+    from .views import product_views
+    app.register_blueprint(product_views.bp)
 
-    from .views import sales_operations
-    app.register_blueprint(sales_operations.bp)
-        
-    from .views import user_management
-    app.register_blueprint(user_management.bp)
+    from .views import sales_views
+    app.register_blueprint(sales_views.bp)
+
+    from .views import users_views
+    app.register_blueprint(users_views.bp)
 
     return app 
