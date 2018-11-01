@@ -6,9 +6,7 @@ from flask import request
 
 class Sale(DbConnection):
  
-    # def __init__(self):
-    #     self.requester = 'Attendant Id'
-
+   
     def addSale(self, product_id, quantity, total_price): 
         self.requester = 1       
         command = """INSERT INTO sales (attendant_id, product_id,

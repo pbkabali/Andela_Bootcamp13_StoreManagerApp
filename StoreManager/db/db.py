@@ -42,6 +42,8 @@ class DbConnection:
             ,first_name VARCHAR(50) NOT NULL
             ,last_name VARCHAR(50)
             ,username VARCHAR(10) UNIQUE NOT NULL
+            ,password VARCHAR(50) NOT NULL
+            ,role VARCHAR(5) NOT NULL
             ,created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
             )            
             """,
