@@ -22,6 +22,13 @@ def create_product():
             error = "Required fields must be filled and non-zero!"
             return jsonify({"response": error}), 400
 
+        #check that input is not space
+        fields = [category, name, unit, unit_price, quantity, minimum_quantity]
+        for field in fields:
+            if field == " ":    
+                error = "Required fields cannot be spaces!"
+                return jsonify({"response": error}), 400
+
         #confirm number fields have numbers
         if not isinstance(unit_price*quantity*minimum_quantity, int): 
             error = "Number fields must be Numbers!"
@@ -53,9 +60,9 @@ def product_by_id(productId):
 
     if request.method == "PUT":
         user_data = request.get_json()
-        characteristic =  user_data.get('characteristic')
+        key =  user_data.get('key')
         value = user_data.get('value')
-        product.modifyProduct(productId, characteristic, value)
+        product.modifyProduct(productId, key, value)
         response = product.getProductbyId(productId)
         message = "modified_product"
         return jsonify ({message:response})

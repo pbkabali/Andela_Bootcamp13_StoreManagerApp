@@ -59,7 +59,7 @@ class DbConnection:
             CREATE TABLE IF NOT EXISTS sales(
             sale_id SMALLSERIAL PRIMARY KEY
             ,attendant_id SMALLINT REFERENCES users(users_id)
-            ,product_id SMALLINT REFERENCES products(product_id)            
+            ,product_id SMALLINT NOT NULL            
             ,quantity SMALLINT NOT NULL           
             ,total_price INT NOT NULL
             ,created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
