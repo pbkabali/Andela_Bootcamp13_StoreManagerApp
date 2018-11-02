@@ -1,21 +1,21 @@
 import pytest
 from flask import jsonify
 
-def test_fetch_products_from_empty_store(client):
+def test_fetch_products_from_empty_store(client, db):
     response = client.get('/api/v1/products')
-    assert b"available_products" in response.data
+    assert b"There are no products in inventory" in response.data
 
-# def test_fetch_product_by_id_from_empty_inventory(client):
-#     response = client.get('/api/v1/products/1')
-#     assert b"There are no products in inventory" in response.data
+def test_fetch_product_by_id_from_empty_inventory(client, db):
+    response = client.get('/api/v1/products/1')
+    assert b"There are no products in inventory" in response.data
 
-# def test_create_new_product(client, first_test_product):
-#     response = client.post(
-#         '/api/v1/products/create'
-#         ,data = first_test_product
-#         ,content_type='application/json'
-#         )
-#     assert b"Product added successfully!" in response.data
+def test_create_new_product(client,db, product):
+    response = client.post(
+        '/api/v1/products/create'
+        ,data = product
+        ,content_type='application/json'
+        )
+    assert b"product_added" in response.data
 
 # def test_create_duplicate_product(client, three_test_products, first_test_product):
 #     for product in three_test_products:

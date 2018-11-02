@@ -50,7 +50,8 @@ def create_product():
 @bp.route('/api/v1/products/<int:productId>', methods = ['GET','PUT','DELETE'])
 def product_by_id(productId):
     product = Product()
-    if  product.getProducts == None:
+    response = product.getProducts()
+    if response == []:
         message = "There are no products in inventory!"
         return jsonify({"response":message}), 200
     response = product.getProductbyId(productId)

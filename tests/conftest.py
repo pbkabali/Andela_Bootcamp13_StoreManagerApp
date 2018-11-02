@@ -12,7 +12,7 @@ def app():
 
 @pytest.fixture
 def db():
-    db = DbConnection('test_db')
+    db = DbConnection()
     db.cursor.execute("""DROP TABLE sales CASCADE""")
     db.cursor.execute("""DROP TABLE products CASCADE""")
     db.cursor.execute("""DROP TABLE users CASCADE""")
@@ -25,7 +25,7 @@ def client(app):
     return app.test_client()
 
 @pytest.fixture
-def first_test_product():
+def product():
     product_data = json.dumps({
         "category":"Apparel"
         ,"name":"Baseball Hats"
