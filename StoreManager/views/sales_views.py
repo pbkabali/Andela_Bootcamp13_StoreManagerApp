@@ -71,7 +71,8 @@ def get_all_records():
 def get_record_by_id(saleId): 
     sale=Sale()
 
-    if  sale.getAllRecords() == None:
+    response = sale.getAllRecords()
+    if response == []:
         message = "There are no sales records to show!"
         return jsonify({"response": message})
 
