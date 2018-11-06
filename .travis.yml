@@ -6,6 +6,9 @@ python:
 before_script:
   - pip install -r requirements.txt
 
+#create database
+  -psql -C 'CREATE DATABASE store;' -U postgres
+
 script:
   - python3 -m pytest --cov StoreManager --cov-report term-missing
   

@@ -1,14 +1,23 @@
 import pytest
 from StoreManager import create_app
-from StoreManager.models.products import inventory
-from StoreManager.models.sales import sales_records
+from StoreManager.db.db import DbConnection
+from StoreManager import config
 import json
 
 
 @pytest.fixture
 def app():
-    app = create_app()
+    app = create_app(config.TestingConfig)
     return app
+
+@pytest.fixture
+def db():
+    db = DbConnection()
+    db.cursor.execute("""DROP TABLE sales CASCADE""")
+    db.cursor.execute("""DROP TABLE products CASCADE""")
+    db.cursor.execute("""DROP TABLE users CASCADE""")
+    db.create_db_tables()
+    return db
 
 
 @pytest.fixture
@@ -16,7 +25,7 @@ def client(app):
     return app.test_client()
 
 @pytest.fixture
-def first_test_product():
+def product():
     product_data = json.dumps({
         "category":"Apparel"
         ,"name":"Baseball Hats"
@@ -25,11 +34,11 @@ def first_test_product():
         ,"quantity":35
         ,"minimum_quantity":2
     })
-    yield product_data
-    inventory.clear()
+    return product_data
+   
 
 @pytest.fixture
-def three_test_products():
+def products():
     product1 = json.dumps({
         "category":"Apparel"
         ,"name":"Baseball Hats"
@@ -55,8 +64,8 @@ def three_test_products():
         ,"minimum_quantity":1
     })
     product_data = [product1, product2, product3]
-    yield product_data
-    inventory.clear()
+    return product_data
+   
 
 @pytest.fixture
 def empty_field_product():
@@ -68,11 +77,10 @@ def empty_field_product():
         ,"quantity":35
         ,"minimum_quantity":2
     })
-    yield product_data
-    inventory.clear()
+    return product_data    
 
 @pytest.fixture
-def string_in_number_field_product():
+def string_in_product():
     product_data = json.dumps({
         "category":"Apparel"
         ,"name":"Baseball Hats"
@@ -81,17 +89,25 @@ def string_in_number_field_product():
         ,"quantity":35
         ,"minimum_quantity":2
     })
-    yield product_data
-    inventory.clear()   
+    return product_data
 
 @pytest.fixture
-def first_sale():
+def user():
+    user_details = json.dumps({
+        "first_name":"kkkke",
+	    "last_name":"Lube",
+	    "username":"pabali",
+	    "password":"polos123"       
+    })
+    return user_details
+  
+@pytest.fixture
+def sale():
     sale_details = json.dumps({
         "product_id":1
         ,"quantity":3        
     })
-    yield sale_details
-    sales_records["records"].clear() 
+    return sale_details
 
 @pytest.fixture
 def empty_field_sale():
@@ -99,20 +115,20 @@ def empty_field_sale():
         "product_id":""
         ,"quantity":3        
     })
-    yield sale_details
-    sales_records["records"].clear()     
+    return sale_details
+       
 
 @pytest.fixture
-def string_in_number_field_sale():
+def string_sale():
     sale_details = json.dumps({
         "product_id":"str"
         ,"quantity":3        
     })
-    yield sale_details
-    sales_records["records"].clear()  
+    return sale_details
+     
 
 @pytest.fixture
-def two_test_sales():
+def sales():
     sale_details1 = json.dumps({
         "product_id":1
         ,"quantity":3        
@@ -122,5 +138,5 @@ def two_test_sales():
         ,"quantity":2        
     })
     sale_details = [sale_details1, sale_details2]
-    yield sale_details
-    sales_records["records"].clear()  
+    return sale_details
+     
