@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
-from . import config
+from flask_jwt_extended import JWTManager
+
 
 def create_app(config_name):
 
@@ -7,6 +8,7 @@ def create_app(config_name):
 
     app.config.from_object(config_name)
 
+    jwt = JWTManager(app)
     
     @app.route("/")
     def homepage():

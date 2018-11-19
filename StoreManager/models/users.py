@@ -25,14 +25,13 @@ class User(DbConnection):
             command, (first_name, last_name, username, password, role)                         
         )   
 
-    def login(self, username, password):
-        command = """SELECT * FROM users WHERE username = %s"""
-        self.cursor.execute(command, [username])
-        user = self.cursor.fetchone()
-        if not user:
-            response = "incorrect username"
-        elif user['password'] != password:
-            response = "incorrect password!"
-        else:
-            response = user['role']
-        return response
+    def upgradeUser(self, username):
+        command = """UPDATE users SET role = 'admin' WHERE username = %s """     
+        self.cursor.execute(command, [username])   
+
+    def downgradeUser(self, username):
+        command = """UPDATE users SET role = 'user' WHERE username = %s """     
+        self.cursor.execute(command, [username])   
+     
+    
+        

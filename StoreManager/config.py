@@ -7,6 +7,7 @@ class DevelopmentConfig(BaseConfig):
     ENV = 'development'
     DATABASE = 'store'
     TESTING = False
+    JWT_SECRET_KEY = 'jwt-secret'
 
 class TestingConfig(BaseConfig):
     DEBUG = True

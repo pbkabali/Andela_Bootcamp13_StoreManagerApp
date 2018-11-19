@@ -1,12 +1,20 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from ..models.products import Product
 from ..models.sales import Sale
+from ..models.users import User
 
 
 bp = Blueprint("sales", __name__)
 
 @bp.route('/api/v1/sales/create_record', methods = ['GET', 'POST'])
+@jwt_required
 def create_record():
+    user = User()
+    current_user = get_jwt_identity()
+    if user.get_a_user(current_user)['role'] == 'admin':
+        response = "This operation is only for attendants!"
+        return jsonify(response), 401
 
     #check that products records is not empty
     product=Product()
@@ -58,7 +66,13 @@ def create_record():
     return jsonify({message:response}), 200    
 
 @bp.route('/api/v1/admin/sales/all')
+@jwt_required
 def get_all_records():
+    user = User()
+    current_user = get_jwt_identity()
+    if user.get_a_user(current_user)['role'] == 'user':
+        response = "You are not authorised to perform this operation!"
+        return jsonify(response), 401
     sale=Sale()
     response = sale.getAllRecords()
     if response == []:
@@ -68,9 +82,14 @@ def get_all_records():
     return jsonify({message : response}), 200
 
 @bp.route('/api/v1/sales/<int:saleId>')
+@jwt_required
 def get_record_by_id(saleId): 
+    user = User()
+    current_user = get_jwt_identity()
+    if user.get_a_user(current_user)['role'] == 'user':
+        response = "You are not authorised to perform this operation!"
+        return jsonify(response), 401
     sale=Sale()
-
     response = sale.getAllRecords()
     if response == []:
         message = "There are no sales records to show!"

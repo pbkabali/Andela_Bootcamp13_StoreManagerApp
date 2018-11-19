@@ -1,12 +1,20 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from ..models.products import Product
+from ..models.users import User
 import json
 
 bp = Blueprint('products', __name__)
 
 
 @bp.route('/api/v1/products/create', methods = ['GET','POST'])
+@jwt_required
 def create_product():
+    user = User()
+    current_user = get_jwt_identity()
+    if user.get_a_user(current_user)['role'] == 'user':
+        response = "You are not authorised to perform this operation!"
+        return jsonify({"response" : response}), 401
     if request.method == 'POST':
         user_data = request.get_json()
         category =  user_data.get('category')
@@ -48,6 +56,7 @@ def create_product():
 
     
 @bp.route('/api/v1/products/<int:productId>', methods = ['GET','PUT','DELETE'])
+@jwt_required
 def product_by_id(productId):
     product = Product()
     response = product.getProducts()
@@ -60,15 +69,28 @@ def product_by_id(productId):
         return jsonify({'Response':message}), 404
 
     if request.method == "PUT":
+        user = User()
+        current_user = get_jwt_identity()
+        if user.get_a_user(current_user)['role'] == 'user':
+            response = "You are not authorised to perform this operation!"
+            return jsonify({"response" : response}), 401
         user_data = request.get_json()
         key =  user_data.get('key')
         value = user_data.get('value')
+        if key not in ["product_name", "unit", "unit_price","quantity",
+        "minimum_quantity", "category"]:
+            return jsonify({"response":"field to update unknown!"}), 400
         product.modifyProduct(productId, key, value)
         response = product.getProductbyId(productId)
         message = "modified_product"
         return jsonify ({message:response})
 
     if request.method == "DELETE":
+        user = User()
+        current_user = get_jwt_identity()
+        if user.get_a_user(current_user)['role'] == 'user':
+            response = "You are not authorised to perform this operation!"
+            return jsonify({"response" : response}), 401
         product.deleteProduct(productId)
         message = "deleted_product"
         return jsonify({"response":message})   
@@ -77,6 +99,7 @@ def product_by_id(productId):
     return jsonify({message : response}), 200
 
 @bp.route('/api/v1/products')
+@jwt_required
 def get_all_products():
     products = Product()
     response = products.getProducts()
