@@ -4,10 +4,10 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 from ..models.users import User
 import json
 
-bp = Blueprint('users', __name__, url_prefix='/auth')
+bp = Blueprint('users', __name__, url_prefix='/api/v1/auth')
 
 
-@bp.route('/api/v1/signup', methods=['POST'])
+@bp.route('/signup', methods=['POST'])
 def register():
     user=User()
     user_data = request.get_json()
@@ -18,7 +18,7 @@ def register():
     
     #confirm that required fields are not empty
     if not (first_name and last_name and username and password):
-        error = "Required fields must be filled and non-zero!"
+        error = "first_name, last_name, username and password fields must be filled and non-zero!"
         return jsonify({"response": error}), 400
 
     if user.get_a_user(username) != None:
@@ -38,7 +38,7 @@ def register():
     except Exception as e:
         return jsonify({"Response": e})
 
-@bp.route('/api/v1/login', methods=['POST'])
+@bp.route('/login', methods=['POST'])
 def login():
     user=User()
     user_data = request.get_json()
@@ -57,7 +57,7 @@ def login():
         access_token = create_access_token(identity=username)
     return jsonify({"Response": response, "access_token": access_token}),200
 
-@bp.route('/api/v1/users')
+@bp.route('/users')
 @jwt_required
 def get_all_users():
     user = User()
@@ -73,7 +73,7 @@ def get_all_users():
     message = "available_users" 
     return jsonify({message:response}), 200
 
-@bp.route('/api/v1/users/upgrade/<username>', methods = ['PUT'])
+@bp.route('/users/upgrade/<username>', methods = ['PUT'])
 @jwt_required
 def upgrade_a_user(username):
     user = User()
@@ -85,7 +85,7 @@ def upgrade_a_user(username):
     response = "User %s has been upgraded to admin status" %username
     return jsonify({"response": response}), 200
 
-@bp.route('/api/v1/users/downgrade/<username>', methods = ['PUT'])
+@bp.route('/users/downgrade/<username>', methods = ['PUT'])
 @jwt_required
 def downgrade_a_user(username):
     user = User()

@@ -1,37 +1,43 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from flask import current_app, g
+from .. import app
+from .. import config
 
 
 class DbConnection:
 
     def __init__(self):
+
+        if app.config.get('ENV') == 'development':
+            dbname = config.DevelopmentConfig.DATABASE
+            host = config.DevelopmentConfig.HOST
+            user = config.DevelopmentConfig.USER
+            password = config.DevelopmentConfig.PASSWORD
+
+        if app.config.get('ENV') == 'testing':
+            dbname = config.TestingConfig.DATABASE
+            host = config.TestingConfig.HOST
+            user = config.TestingConfig.USER
+            password = config.TestingConfig.PASSWORD
+
+        if app.config.get('ENV') == 'production':
+            dbname = config.ProductionConfig.DATABASE
+            host = config.ProductionConfig.HOST
+            user = config.ProductionConfig.USER
+            password = config.ProductionConfig.PASSWORD
+
         try:
-            self.connect = psycopg2.connect(dbname="store", user="postgres",
-             host="localhost", password = "polos241!",port=5432, cursor_factory=RealDictCursor)#
-            print('Database STORE succesfully connected')
+            self.connect = psycopg2.connect(dbname = dbname, user = user,
+             host = host, password = password, port=5432, cursor_factory=RealDictCursor)
+            print('Database succesfully connected')
         except Exception as e:
             print(e)
-            print('failed to connect')    
+            print('failed to connect database!')    
         self.cursor = self.connect.cursor()
-        self.connect.autocommit = True      
-
-
-#         #     self.g = g   			
-            
-
-#     # def get_db(self):
-#     #     if "db" not in g:
-#     #         self.g.db = psycopg2.connect(current_app.config['DATABASE']) 
-#     #     return self.g.db      
-
-    # def close_db(self):
-    #     self.db = g.po('db')
-    #     if self.db is not None:
-    #         self.db.close()
+        self.connect.autocommit = True    
 
     def create_db_tables(self):  
-        # self.cursor.execute("""CREATE TABLE IF NOT EXISTS users(id INT, username VARCHAR)""")
+        
         commands = (
             """
             CREATE TABLE IF NOT EXISTS users(
