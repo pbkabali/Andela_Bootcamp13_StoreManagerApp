@@ -1,0 +1,6 @@
+StoreManager/__pycache__/
+StoreManager/db/__pycache__/
+StoreManager/models/__pycache__/
+StoreManager/views/__pycache__/
+tests/__pycache__/
+__pycache__/
