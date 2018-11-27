@@ -49,21 +49,25 @@ function loginUser(e){
         .then((res) => res.json())
         .then(data => {
             
-            if (data.Response.search("admin") > 0 && next_page == "admin_profile.html"){ 
+            if (data.Response == "Welcome! successfully logged in as admin"
+                && next_page == "admin_profile.html"){ 
                 document.getElementsByTagName("form")[0].submit();
                 localStorage.setItem('token', data.access_token);
                 localStorage.setItem('message', data.Response);
                 localStorage.setItem('user', username);
             }
-            else if (data.Response.search("admin") < 0 && next_page == "profile.html"){ 
+            else if (data.Response == "Welcome! Successfully logged in!" 
+                && next_page == "profile.html"){ 
                 document.getElementsByTagName("form")[0].submit();
                 localStorage.setItem('token', data.access_token);
                 localStorage.setItem('message', data.Response);
                 localStorage.setItem('user', username);
+            }            
+            else if (data.Response == "incorrect password!"){
+                alert("Incorrect password!");                  
             }
-            else{
-                alert("Wrong credentials entered!");  
-                console.log(data);
+            else {
+                alert("Account not found!");                 
             }
         }) 
     }      

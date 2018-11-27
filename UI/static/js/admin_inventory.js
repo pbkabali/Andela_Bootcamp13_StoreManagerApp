@@ -8,12 +8,12 @@ window.onload = function() {
     .then((res) => res.json())
     .then((data) => {
         let table_contents = `
-        <tr>                               
-            <th>Product Category</th>
-            <th>Product Name</th>
-            <th>Quantity in Stock</th>
-            <th>Unit Price</th>
-            <th>Add 1pc to Cart</th>
+        <tr>                                
+        <th>Product Category</th>
+        <th>Product Name</th>
+        <th>Quantity in Stock</th>
+        <th>Unit Price</th>
+        <th>Edit Product</th>
         </tr>
         `;
         data.available_products.forEach(product => {
@@ -23,7 +23,7 @@ window.onload = function() {
                 <td id = "item-name">${product.product_name}</td>
                 <td id = "item-quantity">${product.quantity}</td>
                 <td id = "item-unitprice">${product.unit_price}</td>
-                <td><input type="checkbox" class = "checkbox1">                           
+                <td><button class= "button3">Edit/Delete</button></td>                           
             </tr>
             `;            
         });
