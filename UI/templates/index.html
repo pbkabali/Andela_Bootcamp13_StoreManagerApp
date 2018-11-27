@@ -12,9 +12,9 @@
         <a href ="index.html"><img src = "../static/images/store_manager_logo.jpg"></a>
         <a href ="index.html"><h2><span>Store</span>Manager</h2></a>
       </div>
-      <div class = "top-right-div">
-        <a href = "sign_up.html">SIGN-UP</a> 
-        <a href = "readme.html">&#63;</a>    
+      <div class = "top-right-div">       
+        <a href = "readme.html">&#63;</a>
+        <a href = "sign_up.html">SIGN-UP</a>     
       </div>
     </div>
     <div class = "body-main-div">        
@@ -23,20 +23,21 @@
                 <div class="form-div">
                     <h2 class = "form-heading">LOG IN</h2>
                     <form class ="detail-entry-form" action="profile.html">
-                        <input class = "input1" type="text" name="username" placeholder="Enter Username"><br>
+                        <input id = "username" class = "input1" type="text" name="username" placeholder="Enter Username"><br>
                         <br>
-                        <input class = "input1" type="PASSWORD" name="password" placeholder="Enter Password"><br>
+                        <input id = "password" class = "input1" type="PASSWORD" name="password" placeholder="Enter Password"><br>
                         <br>                  
                         <input type="checkbox" onclick="loginCheckBox()">Login as Admin
                         <br>
                         <br>
+                        <input id = "submit-login" class = "button1" type="submit" value="login">
                         <br>
-                        <input class = "button1" type="submit" value="login">
                         <br>
-                        <br>
-                    </form>                   
+                    </form> 
+                    <!-- <button id="submit-login" class = "button1">login</button>                  
                     <br>
                     <br>
+                    <br> -->
                 </div>
             </div>
             <div class ="tagline-div">
@@ -53,6 +54,6 @@
       </div>
      
     </div>      
-    <script src="../static/js/myFunctions.js"></script>
+    <script src="../static/js/index.js"></script>
   </body>
 </html>
