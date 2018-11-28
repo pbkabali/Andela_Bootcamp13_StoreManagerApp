@@ -8,7 +8,8 @@ window.onload = function() {
     .then((res) => res.json())
     .then((data) => {
         let table_contents = `
-        <tr>                                
+        <tr> 
+        <th>ID</th>                               
         <th>Product Category</th>
         <th>Product Name</th>
         <th>Quantity in Stock</th>
@@ -18,7 +19,8 @@ window.onload = function() {
         `;
         data.available_products.forEach(product => {
             table_contents +=`
-            <tr>                                
+            <tr> 
+                <td id = "product-category">${product.product_id}</td>                               
                 <td id = "product-category">${product.category}</td>
                 <td id = "item-name">${product.product_name}</td>
                 <td id = "item-quantity">${product.quantity}</td>
