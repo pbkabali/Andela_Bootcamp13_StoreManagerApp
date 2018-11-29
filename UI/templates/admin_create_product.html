@@ -43,28 +43,28 @@
                     <br>
                     <form class ="detail-entry-form" action="admin_inventory.html">
                         <label for="product-category">Product Category:</label><br> 
-                        <input class = "input1" type="text" name="product-category" placeholder="Product Category"><br>
+                        <input id = "category" class = "input1" type="text" name="product-category" placeholder="Product Category"><br>
                         <br>
                         <label for="product-name">Product Name:</label><br> 
-                        <input class = "input1" type="text" name="product-name" placeholder="Product Name"><br>
+                        <input id = "name" class = "input1" type="text" name="product-name" placeholder="Product Name"><br>
                         <br>
-                        <label for="quantity-in-stock">Quantity in Stock:</label><br>  
-                        <input class = "input1" type="text" name="quantity-in-stock" placeholder="Quantity in Stock"><br>
+                        <label for="quantity-in-stock">Quantity to add:</label><br>  
+                        <input id = "quantity" class = "input1" type="text" name="quantity-in-stock" placeholder="Quantity to add"><br>
                         <br>
                         <label for="unit-of-measure">Unit of Measure:</label><br>
-                        <input class = "input1" type="text" name="unit-of-measure" placeholder="Unit of Measure"><br>
+                        <input id = "unit" class = "input1" type="text" name="unit-of-measure" placeholder="Unit of Measure"><br>
                         <br>
                         <label for="unit-price">Unit Price:</label><br>
-                        <input class = "input1" type="text" name="unit-price" placeholder="Unit Price"><br>
+                        <input id = "price" class = "input1" type="text" name="unit-price" placeholder="Unit Price"><br>
+                        <br>   
+                        <label for="unit-price">Minimum Stock:</label><br>
+                        <input id = "minimum-stock" class = "input1" type="text" name="unit-price" placeholder="Minimum Stock"><br>
                         <br>   
                         <br>           
-                        <input class = "button2" type="submit" value="Create/Modify">
+                        <input id = "submit-product" class = "button2" type="submit" value="Create Product">
                         <br>
                         <br>
-                        <br>
-                        <input class = "delete-button" type="submit" value="Delete Product!">
-                        <br>
-                        <br>
+                       
                     </form>
                    
                 </div>
@@ -82,6 +82,6 @@
             <p class = "footer-text">All rights reserved.&copy; Andela 2018</p>          
         </div>        
     </div>
-    <script src="../static/js/myFunctions.js"></script>    
+    <script src="../static/js/admin_create_product.js"></script>    
   </body>
 </html>
