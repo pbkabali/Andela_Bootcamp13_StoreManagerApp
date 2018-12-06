@@ -62,6 +62,8 @@ function loginUser(e){
                 localStorage.setItem('token', data.access_token);
                 localStorage.setItem('message', data.Response);
                 localStorage.setItem('user', username);
+                let initialCart = [];
+                localStorage.setItem('shoppingCart', JSON.stringify(initialCart));
             }            
             else if (data.Response == "incorrect password!"){
                 alert("Incorrect password!");                  
