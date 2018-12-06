@@ -19,7 +19,7 @@
 }
 .logo-div  h2{
     margin-top: 20px;
-    margin-left: 120px;
+    margin-left: 70px;
     color:white;
     font-weight: 100;
 }
@@ -292,6 +292,8 @@
 @media only screen and (max-width: 540px) {
     .top-center-div{
         order:3;
+        margin-right: 100px;
+        text-align: center;
     }    
     .detail-entry-form{
         padding: 20px;
@@ -308,7 +310,7 @@
         justify-content: center; 
     }
     .menu-item-div{
-        width:44%;
+        width:43%;
         text-align: center;
         border-radius:10px;
         border-style: solid;  
@@ -316,7 +318,7 @@
         border-width: 1px;  
     }    
     .current-menu-item-div{
-        width:44%;
+        width:43%;
         text-align: center;
         border-radius:10px;
         border-style: solid;  
