@@ -2,9 +2,9 @@ window.onload = function() {
     document.getElementById("names-of-user").innerHTML
     = localStorage.getItem('user');
     const 
-        personal_sales_url = 'https://polos-store-manager.herokuapp.com/api/v1/sales/personal';
+        all_sales_url = 'https://polos-store-manager.herokuapp.com/api/v1/admin/sales/all';
 
-    fetch(personal_sales_url, {
+    fetch(all_sales_url, {
         headers: {'Authorization': 'Bearer '+ localStorage.getItem('token')}
     })
     .then((res) => res.json())
@@ -12,7 +12,7 @@ window.onload = function() {
         let total_products = 0,
             total_records = 0,
             total_revenue = 0;            
-        data.your_records.forEach(record => {
+        data.sales_records.forEach(record => {
             total_products += record.quantity;
             total_records++;
             total_revenue += record.total_price; 
