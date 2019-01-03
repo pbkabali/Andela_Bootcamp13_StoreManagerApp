@@ -115,6 +115,4 @@ function addToCart(e){
     localStorage.setItem('shoppingCart', JSON.stringify(oldCart));
 }
 
-// onclick = "addToCart(this)"
-// onclick = "productDetails(this)"
 
