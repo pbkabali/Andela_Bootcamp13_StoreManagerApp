@@ -21,7 +21,7 @@ window.onload = function() {
         </tr>
         `;
         data.your_records.forEach(record => {
-            // if (record.cancelled == false){            
+            if (record.cancelled == false){            
                 total_products += record.quantity;
                 total_records++;
                 total_revenue += record.total_price;
@@ -36,7 +36,7 @@ window.onload = function() {
 
                 </tr>     
                 `;                   
-            // }
+            }
         });
         document.getElementById("ind-sales-table").innerHTML = table_contents; 
         document.getElementById('total-records').innerHTML = total_records; 
